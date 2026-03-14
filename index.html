@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dogwood Photos | Wendell, NC Photographer</title>
+  <meta name="description" content="Dogwood Photos — affordable 15-minute outdoor photo sessions in Wendell, NC. Book online instantly.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0e0c0a;
+      --white: #faf8f5;
+      --blush: #E8C7C8;
+      --blush-light: #f3e8e8;
+      --blush-muted: #c9a8a8;
+      --font-display: 'Great Vibes', cursive;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ===================== TYPOGRAPHY ===================== */
+    .font-display { font-family: var(--font-display); font-weight: 400; }
+    .font-body { font-family: var(--font-body); }
+
+    h1, h2, h3 { line-height: 1.2; }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--black);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===================== LAYOUT ===================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section--alt {
+      background: var(--blush-light);
+    }
+
+    /* ===================== NAVIGATION ===================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(14, 12, 10, 0.06);
+      transition: box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 2px 20px rgba(14, 12, 10, 0.08);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .nav__logo svg { width: 44px; height: 36px; }
+
+    .nav__logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav__logo-text .dogwood {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--black);
+    }
+
+    .nav__logo-text .photos {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.6rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+      margin-top: 2px;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--black);
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--blush);
+      transition: width 0.3s;
+    }
+
+    .nav__links a:hover::after,
+    .nav__links a.active::after {
+      width: 100%;
+    }
+
+    .nav__links a:hover { color: var(--blush-muted); }
+
+    .nav__book-btn {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.6rem 1.5rem;
+      background: var(--blush);
+      color: var(--black);
+      border-radius: 0;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav__book-btn:hover {
+      background: var(--blush-muted);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    /* Mobile menu */
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--black);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav__hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--white);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav__mobile.open { display: flex; }
+
+    .nav__mobile a {
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .nav__book-btn { display: none; }
+      .nav__hamburger { display: flex; }
+    }
+
+    /* ===================== PAGES ===================== */
+    .page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      padding-top: 72px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .page.visible {
+      opacity: 1;
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: var(--blush-light);
+      opacity: 0.15;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 2rem;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      color: var(--blush);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    .hero__tagline {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1rem;
+      color: rgba(250, 248, 245, 0.7);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero__cta {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 1rem 3rem;
+      background: var(--blush);
+      color: var(--black);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .hero__cta:hover {
+      background: var(--blush-muted);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Mini hero for inner pages */
+    .hero--mini {
+      min-height: 50vh;
+    }
+
+    .hero--mini .hero__title {
+      font-size: clamp(3rem, 8vw, 6rem);
+    }
+
+    /* ===================== INTRO ===================== */
+    .intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .intro p {
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: rgba(14, 12, 10, 0.75);
+    }
+
+    /* ===================== GALLERY GRID ===================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-grid__item {
+      aspect-ratio: 4/5;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-grid__item span {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+    }
+
+    .gallery-grid__item:hover {
+      background: #eddcdc;
+    }
+
+    .gallery-grid__item--wide {
+      grid-column: span 2;
+      aspect-ratio: 8/5;
+    }
+
+    .gallery-grid__item--tall {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-grid__item--wide { grid-column: span 1; aspect-ratio: 4/5; }
+      .gallery-grid__item--tall { grid-row: span 1; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== PRICING CARDS ===================== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid rgba(14, 12, 10, 0.08);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.08);
+    }
+
+    .pricing-card--featured {
+      border-color: var(--blush);
+    }
+
+    .pricing-card--featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--blush);
+      color: var(--black);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: 4px 16px;
+    }
+
+    .pricing-card__name {
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card__price {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card__features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card__features li {
+      font-weight: 300;
+      font-size: 0.9rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(14, 12, 10, 0.05);
+      color: rgba(14, 12, 10, 0.7);
+    }
+
+    .pricing-card__features li:last-child { border: none; }
+
+    /* ===================== BUTTONS ===================== */
+    .btn {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.85rem 2.5rem;
+      transition: all 0.3s;
+    }
+
+    .btn--primary {
+      background: var(--blush);
+      color: var(--black);
+    }
+
+    .btn--primary:hover {
+      background: var(--blush-muted);
+      color: var(--white);
+    }
+
+    .btn--outline {
+      border: 1px solid var(--black);
+      color: var(--black);
+    }
+
+    .btn--outline:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ===================== QUOTE BLOCK ===================== */
+    .quote-block {
+      text-align: center;
+      padding: 6rem 2rem;
+      background: var(--black);
+    }
+
+    .quote-block__text {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.3;
+    }
+
+    .quote-block__attr {
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush);
+    }
+
+    /* ===================== CTA BANNER ===================== */
+    .cta-banner {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--blush-light);
+    }
+
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner__text {
+      font-weight: 300;
+      font-size: 1rem;
+      color: rgba(14, 12, 10, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    /* ===================== ABOUT PAGE ===================== */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-photo {
+      aspect-ratio: 3/4;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-photo span {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+    }
+
+    .about-text h3 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: rgba(14, 12, 10, 0.75);
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-content { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* Values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      text-align: center;
+    }
+
+    .value-item__icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1.5rem;
+      border: 1.5px solid var(--blush);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blush-muted);
+      font-size: 1.2rem;
+    }
+
+    .value-item h4 {
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .value-item p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: rgba(14, 12, 10, 0.65);
+    }
+
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ===================== SERVICES ===================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .service-card {
+      border: 1px solid rgba(14, 12, 10, 0.08);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.06);
+    }
+
+    .service-card__icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      background: var(--blush-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: rgba(14, 12, 10, 0.65);
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== ACCORDION ===================== */
+    .accordion { max-width: 800px; margin: 0 auto; }
+
+    .accordion__item {
+      border-bottom: 1px solid rgba(14, 12, 10, 0.08);
+    }
+
+    .accordion__trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--black);
+      text-align: left;
+      transition: color 0.3s;
+    }
+
+    .accordion__trigger:hover { color: var(--blush-muted); }
+
+    .accordion__trigger span {
+      transition: transform 0.3s;
+      font-weight: 300;
+      font-size: 1.4rem;
+      color: var(--blush);
+    }
+
+    .accordion__item.open .accordion__trigger span {
+      transform: rotate(45deg);
+    }
+
+    .accordion__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+
+    .accordion__item.open .accordion__content {
+      max-height: 500px;
+      padding-bottom: 1.5rem;
+    }
+
+    .accordion__content p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: rgba(14, 12, 10, 0.7);
+      line-height: 1.8;
+    }
+
+    /* ===================== BOOKING ===================== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .step__number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--blush);
+      margin-bottom: 0.5rem;
+    }
+
+    .step h3 {
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .step p {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: rgba(14, 12, 10, 0.65);
+    }
+
+    @media (max-width: 768px) {
+      .steps-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .policies-box {
+      background: var(--blush-light);
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      border-left: 3px solid var(--blush);
+    }
+
+    .policies-box h3 {
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .policies-box ul {
+      list-style: none;
+    }
+
+    .policies-box li {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: rgba(14, 12, 10, 0.7);
+      padding: 0.4rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .policies-box li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--blush);
+    }
+
+    .calendly-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ===================== FOOTER ===================== */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer__brand .footer-logo {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer__brand p {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.5);
+      font-style: italic;
+    }
+
+    .footer__links h4,
+    .footer__contact h4 {
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 1rem;
+    }
+
+    .footer__links ul { list-style: none; }
+
+    .footer__links li {
+      padding: 0.3rem 0;
+    }
+
+    .footer__links a {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.6);
+      transition: color 0.3s;
+    }
+
+    .footer__links a:hover { color: var(--blush); }
+
+    .footer__contact a {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.6);
+      transition: color 0.3s;
+    }
+
+    .footer__contact a:hover { color: var(--blush); }
+
+    .footer__contact p {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.5);
+      margin-top: 0.5rem;
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(250, 248, 245, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: rgba(250, 248, 245, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .footer__inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    }
+
+    /* ===================== UTILITIES ===================== */
+    .text-center { text-align: center; }
+    .mt-1 { margin-top: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+    .mt-3 { margin-top: 3rem; }
+    .mb-2 { margin-bottom: 2rem; }
+    .mb-3 { margin-bottom: 3rem; }
+
+    /* Stripe buttons */
+    .stripe-btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.85rem 2.5rem;
+      background: var(--blush);
+      color: var(--black);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .stripe-btn:hover {
+      background: var(--blush-muted);
+      color: var(--white);
+    }
+
+    /* Rebooking badge */
+    .rebooking-badge {
+      display: inline-block;
+      background: var(--blush-light);
+      color: var(--blush-muted);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <div class="nav__logo" onclick="navigateTo('home')">
+        <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Camera body -->
+          <rect x="2" y="8" width="40" height="26" rx="3" stroke="#0e0c0a" stroke-width="1.8" fill="none"/>
+          <!-- Camera viewfinder bump -->
+          <path d="M15 8 L18 3 L26 3 L29 8" stroke="#0e0c0a" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <!-- Lens circle -->
+          <circle cx="22" cy="21" r="9" stroke="#0e0c0a" stroke-width="1.5" fill="none"/>
+          <!-- Dogwood flower petals inside lens -->
+          <ellipse cx="22" cy="16" rx="2.8" ry="4" fill="#E8C7C8"/>
+          <ellipse cx="27" cy="21" rx="4" ry="2.8" fill="#E8C7C8"/>
+          <ellipse cx="22" cy="26" rx="2.8" ry="4" fill="#E8C7C8"/>
+          <ellipse cx="17" cy="21" rx="4" ry="2.8" fill="#E8C7C8"/>
+          <!-- Flower center -->
+          <circle cx="22" cy="21" r="1.5" fill="#0e0c0a"/>
+        </svg>
+        <div class="nav__logo-text">
+          <span class="dogwood">Dogwood</span>
+          <span class="photos">Photos</span>
+        </div>
+      </div>
+      <ul class="nav__links">
+        <li><a href="#" data-page="home" class="active">Home</a></li>
+        <li><a href="#" data-page="about">About</a></li>
+        <li><a href="#" data-page="services">Services</a></li>
+        <li><a href="#" data-page="pricing">Pricing</a></li>
+        <li><a href="#" data-page="faq">FAQ</a></li>
+        <li><a href="#" data-page="booking" class="nav__book-btn">Book Now</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="#" data-page="home">Home</a>
+    <a href="#" data-page="about">About</a>
+    <a href="#" data-page="services">Services</a>
+    <a href="#" data-page="pricing">Pricing</a>
+    <a href="#" data-page="faq">FAQ</a>
+    <a href="#" data-page="booking">Book Now</a>
+  </div>
+
+
+  <!-- ===================== HOME PAGE ===================== -->
+  <div class="page active" id="page-home">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Dogwood Photos</h1>
+        <p class="hero__subtitle">Wendell, NC &bull; Outdoor Portrait Sessions</p>
+        <p class="hero__tagline">&ldquo;A neighbor with a camera and a passion for people&rdquo;</p>
+        <a href="#" class="hero__cta" data-page="booking">Book Your Session</a>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section">
+      <div class="container">
+        <div class="intro reveal">
+          <p class="section-label">Welcome</p>
+          <h2 class="section-title">Moments that matter</h2>
+          <p>Simple, affordable, beautiful. Dogwood Photos offers 15-minute outdoor micro sessions at local parks and public spaces throughout the Triangle area. No fancy studio, no overwhelming packages &mdash; just real moments with real people.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Portfolio</p>
+          <h2 class="section-title">Recent Work</h2>
+        </div>
+        <div class="gallery-grid reveal">
+          <div class="gallery-grid__item"><span>Your photo here</span></div>
+          <div class="gallery-grid__item gallery-grid__item--wide"><span>Your photo here</span></div>
+          <div class="gallery-grid__item gallery-grid__item--tall"><span>Your photo here</span></div>
+          <div class="gallery-grid__item"><span>Your photo here</span></div>
+          <div class="gallery-grid__item"><span>Your photo here</span></div>
+          <div class="gallery-grid__item"><span>Your photo here</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Preview -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Investment</p>
+          <h2 class="section-title">Simple, Honest Pricing</h2>
+        </div>
+        <div class="pricing-grid reveal">
+          <!-- Base Session -->
+          <div class="pricing-card">
+            <p class="pricing-card__name">Base Session</p>
+            <p class="pricing-card__price">$40</p>
+            <ul class="pricing-card__features">
+              <li>15-minute outdoor session</li>
+              <li>2 professionally edited photos</li>
+              <li>Delivered in 7 days</li>
+              <li>Local parks &amp; public spaces</li>
+            </ul>
+            <!-- TODO: Replace STRIPE_LINK_BASE, STRIPE_LINK_FULL, STRIPE_LINK_RUSH with real Stripe payment links once account is verified -->
+            <a href="STRIPE_LINK_BASE" class="stripe-btn">Book Base</a>
+          </div>
+          <!-- Full Gallery -->
+          <div class="pricing-card pricing-card--featured">
+            <p class="pricing-card__name">Full Gallery</p>
+            <p class="pricing-card__price">$60</p>
+            <ul class="pricing-card__features">
+              <li>Everything in Base Session</li>
+              <li>All edited photos included</li>
+              <li>No watermarks</li>
+              <li>Delivered in 7 days</li>
+            </ul>
+            <a href="STRIPE_LINK_FULL" class="stripe-btn">Book Full Gallery</a>
+          </div>
+          <!-- Rush -->
+          <div class="pricing-card">
+            <p class="pricing-card__name">Rush Delivery</p>
+            <p class="pricing-card__price">+$20</p>
+            <ul class="pricing-card__features">
+              <li>Add to any session package</li>
+              <li>Photos delivered in 48 hours</li>
+              <li>Same professional editing</li>
+              <li>Perfect for gifts &amp; deadlines</li>
+            </ul>
+            <a href="STRIPE_LINK_RUSH" class="stripe-btn">Add Rush</a>
+          </div>
+        </div>
+        <div class="text-center mt-2 reveal">
+          <div class="rebooking-badge">Rebook within 60 days and save $5</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-block reveal">
+      <p class="quote-block__text">Every family deserves beautiful photos without the stress</p>
+      <p class="quote-block__attr">The Dogwood Philosophy</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner reveal">
+      <h2 class="cta-banner__title">Ready to book?</h2>
+      <p class="cta-banner__text">Pick a time that works for you. 15 minutes is all we need.</p>
+      <a href="#" class="btn btn--primary" data-page="booking">Schedule Your Session</a>
+    </section>
+  </div>
+
+
+  <!-- ===================== ABOUT PAGE ===================== -->
+  <div class="page" id="page-about">
+
+    <section class="hero hero--mini">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <p class="hero__subtitle">Get to Know Us</p>
+        <h1 class="hero__title">About Dogwood</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="about-content reveal">
+          <div class="about-photo">
+            <span>Your photo here</span>
+          </div>
+          <div class="about-text">
+            <p class="section-label">The Story</p>
+            <h3>Dad, neighbor, photographer</h3>
+            <p>Hey there &mdash; I'm the guy behind Dogwood Photos. Dad of two amazing girls, born and raised in the Triangle, and completely in love with this community.</p>
+            <p>What started as snapping photos of my daughters at the park turned into something bigger. Friends started asking, then their friends, then neighbors. I realized I could offer something different &mdash; quick, affordable sessions that don't eat up your whole Saturday.</p>
+            <p>No stuffy studio. No hour-long poses. Just 15 minutes at a beautiful outdoor spot, and you walk away with photos you'll actually want to print. That's the Dogwood way.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">What We Believe</p>
+          <h2 class="section-title">Our Values</h2>
+        </div>
+        <div class="values-grid reveal">
+          <div class="value-item">
+            <div class="value-item__icon">&#9825;</div>
+            <h4>Community First</h4>
+            <p>We photograph our neighbors, not strangers. Every session strengthens the bonds in our community.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-item__icon">&#10003;</div>
+            <h4>Honest Pricing</h4>
+            <p>No hidden fees, no upsells, no pressure. What you see is what you pay. Beautiful photos shouldn't break the bank.</p>
+          </div>
+          <div class="value-item">
+            <div class="value-item__icon">&#9201;</div>
+            <h4>Time Matters</h4>
+            <p>Your time is valuable. Our 15-minute sessions prove you don't need hours to capture something beautiful.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner reveal">
+      <h2 class="cta-banner__title">Let's create something together</h2>
+      <p class="cta-banner__text">Book a session and see the Dogwood difference.</p>
+      <a href="#" class="btn btn--primary" data-page="booking">Book Now</a>
+    </section>
+  </div>
+
+
+  <!-- ===================== SERVICES PAGE ===================== -->
+  <div class="page" id="page-services">
+
+    <section class="hero hero--mini">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <p class="hero__subtitle">What We Offer</p>
+        <h1 class="hero__title">Services</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Our Sessions</p>
+          <h2 class="section-title">Something for Everyone</h2>
+          <p style="max-width:600px;margin:0 auto;font-weight:300;color:rgba(14,12,10,0.7);">All sessions are 15 minutes, outdoors, at a local park or public space of your choice. Simple, relaxed, and always affordable.</p>
+        </div>
+        <div class="services-grid reveal">
+          <div class="service-card">
+            <div class="service-card__icon">&#128106;</div>
+            <h3>Family Sessions</h3>
+            <p>Capture your crew in a relaxed outdoor setting. Perfect for holiday cards, milestone moments, or just-because photos.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">&#10084;</div>
+            <h3>Couples</h3>
+            <p>Engagements, anniversaries, or just a Tuesday. Quick and natural couple portraits that actually look like you.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">&#127891;</div>
+            <h3>Senior &amp; Grad Portraits</h3>
+            <p>Mark the milestone without the marathon. Cap and gown or casual &mdash; your choice, your style.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">&#128188;</div>
+            <h3>Professional Headshots</h3>
+            <p>LinkedIn-ready headshots with natural light. Look polished without feeling posed.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">&#127876;</div>
+            <h3>Holiday Minis</h3>
+            <p>Seasonal mini sessions for holidays. Quick, festive, and perfect for cards and gifts. Watch for announcements!</p>
+          </div>
+          <div class="service-card">
+            <div class="service-card__icon">&#128054;</div>
+            <h3>Pet Combos</h3>
+            <p>Bring your furry family member! We love photographing the whole crew &mdash; four legs included.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner reveal">
+      <h2 class="cta-banner__title">Don't see what you need?</h2>
+      <p class="cta-banner__text">Reach out &mdash; we're happy to chat about custom sessions.</p>
+      <a href="mailto:contact@dogwoodphotos.com" class="btn btn--primary">Email Us</a>
+    </section>
+  </div>
+
+
+  <!-- ===================== PRICING PAGE ===================== -->
+  <div class="page" id="page-pricing">
+
+    <section class="hero hero--mini">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <p class="hero__subtitle">Simple &amp; Transparent</p>
+        <h1 class="hero__title">Pricing</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Packages</p>
+          <h2 class="section-title">Affordable for Everyone</h2>
+        </div>
+        <div class="pricing-grid reveal">
+          <div class="pricing-card">
+            <p class="pricing-card__name">Base Session</p>
+            <p class="pricing-card__price">$40</p>
+            <ul class="pricing-card__features">
+              <li>15-minute outdoor session</li>
+              <li>2 professionally edited photos</li>
+              <li>Delivered in 7 days</li>
+              <li>Local parks &amp; public spaces</li>
+            </ul>
+            <a href="STRIPE_LINK_BASE" class="stripe-btn">Book Base</a>
+          </div>
+          <div class="pricing-card pricing-card--featured">
+            <p class="pricing-card__name">Full Gallery</p>
+            <p class="pricing-card__price">$60</p>
+            <ul class="pricing-card__features">
+              <li>Everything in Base Session</li>
+              <li>All edited photos included</li>
+              <li>No watermarks</li>
+              <li>Delivered in 7 days</li>
+            </ul>
+            <a href="STRIPE_LINK_FULL" class="stripe-btn">Book Full Gallery</a>
+          </div>
+          <div class="pricing-card">
+            <p class="pricing-card__name">Rush Delivery</p>
+            <p class="pricing-card__price">+$20</p>
+            <ul class="pricing-card__features">
+              <li>Add to any session package</li>
+              <li>Photos delivered in 48 hours</li>
+              <li>Same professional editing</li>
+              <li>Perfect for gifts &amp; deadlines</li>
+            </ul>
+            <a href="STRIPE_LINK_RUSH" class="stripe-btn">Add Rush</a>
+          </div>
+        </div>
+        <div class="text-center mt-2 reveal">
+          <div class="rebooking-badge">Rebook within 60 days and save $5</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing FAQ -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Questions</p>
+          <h2 class="section-title">Pricing FAQ</h2>
+        </div>
+        <div class="accordion reveal">
+          <div class="accordion__item">
+            <button class="accordion__trigger">What's included in the base session? <span>+</span></button>
+            <div class="accordion__content">
+              <p>The base session includes a 15-minute outdoor photo shoot at a local park or public space of your choosing, plus 2 professionally edited photos delivered digitally within 7 days.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">What does the Full Gallery include? <span>+</span></button>
+            <div class="accordion__content">
+              <p>The Full Gallery includes everything in the base session, plus all edited photos from your shoot with no watermarks. Typically this means 10-20+ edited images depending on the session.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">How does the rebooking discount work? <span>+</span></button>
+            <div class="accordion__content">
+              <p>If you book another session within 60 days of your last one, you automatically get $5 off. Just mention your previous session when booking and we'll apply the discount.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Can I upgrade from Base to Full Gallery after? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Absolutely! If you start with the Base Session and love your photos, you can upgrade to the Full Gallery for the $20 difference within 14 days of receiving your images.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Do you charge for travel? <span>+</span></button>
+            <div class="accordion__content">
+              <p>No travel fees for locations within the Wendell and greater Triangle area. If you'd like to meet at a location further out, just reach out and we'll figure it out together.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner reveal">
+      <h2 class="cta-banner__title">Ready to book?</h2>
+      <p class="cta-banner__text">Pick a time, show up, and let's make some memories.</p>
+      <a href="#" class="btn btn--primary" data-page="booking">Schedule Your Session</a>
+    </section>
+  </div>
+
+
+  <!-- ===================== FAQ PAGE ===================== -->
+  <div class="page" id="page-faq">
+
+    <section class="hero hero--mini">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <p class="hero__subtitle">Got Questions?</p>
+        <h1 class="hero__title">FAQ</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Answers</p>
+          <h2 class="section-title">Frequently Asked</h2>
+        </div>
+        <div class="accordion reveal">
+          <div class="accordion__item">
+            <button class="accordion__trigger">How long is a session? <span>+</span></button>
+            <div class="accordion__content">
+              <p>All sessions are 15 minutes. It's quick, fun, and you'll be surprised how many great shots we can capture in that time.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Where do sessions take place? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Sessions happen outdoors at local parks and public spaces in the Wendell and Triangle area. You can pick a location you love, or I'm happy to suggest beautiful spots nearby.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">What should we wear? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Wear what makes you feel comfortable and confident. Coordinating colors (not matching) work great for families. Avoid busy patterns and large logos. Earth tones, pastels, and neutrals photograph beautifully outdoors.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Can I bring my dog? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Yes! We love pet combos. Just make sure your pup is comfortable in public spaces and bring some treats. Leashes are fine &mdash; we can edit those out if needed.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">What if it rains? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Weather cancellations are always rescheduled at no charge. If the forecast looks iffy, we'll reach out 24 hours before to discuss options. Your session will never be wasted due to weather.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">What's your cancellation policy? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Cancellations made 48+ hours in advance are fully accommodated. No-shows forfeit the full payment. Late arrivals will receive reduced session time &mdash; we cannot extend past your scheduled window.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">How do I receive my photos? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Photos are delivered digitally via an online gallery. Standard delivery is 7 days. Need them faster? Add Rush Delivery for $20 and get your photos in 48 hours.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">Do you offer prints? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Currently we deliver digital files only, but your images will be high-resolution and print-ready. We're happy to recommend local print shops in the Triangle area.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">How many people can be in a session? <span>+</span></button>
+            <div class="accordion__content">
+              <p>Our sessions work great for individuals, couples, and families up to about 6 people. For larger groups, reach out and we'll find the right setup for you.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger">What payment methods do you accept? <span>+</span></button>
+            <div class="accordion__content">
+              <p>We accept all major credit and debit cards through our secure online payment system. Payment is collected at the time of booking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner reveal">
+      <h2 class="cta-banner__title">Still have questions?</h2>
+      <p class="cta-banner__text">We'd love to hear from you. No question is too small.</p>
+      <a href="mailto:contact@dogwoodphotos.com" class="btn btn--primary">Email Us</a>
+    </section>
+  </div>
+
+
+  <!-- ===================== BOOKING PAGE ===================== -->
+  <div class="page" id="page-booking">
+
+    <section class="hero hero--mini">
+      <div class="hero__bg"></div>
+      <div class="hero__content">
+        <p class="hero__subtitle">Let's Do This</p>
+        <h1 class="hero__title">Book a Session</h1>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">How It Works</p>
+          <h2 class="section-title">Three Simple Steps</h2>
+        </div>
+        <div class="steps-grid reveal">
+          <div class="step">
+            <p class="step__number">1</p>
+            <h3>Pick a Time</h3>
+            <p>Choose a date and time that works for you using our calendar below. Mornings and golden hour are our favorites.</p>
+          </div>
+          <div class="step">
+            <p class="step__number">2</p>
+            <h3>Show Up &amp; Smile</h3>
+            <p>Meet us at your chosen location. We'll handle the rest. Just be yourselves and have fun &mdash; that's when the magic happens.</p>
+          </div>
+          <div class="step">
+            <p class="step__number">3</p>
+            <h3>Get Your Photos</h3>
+            <p>Receive your professionally edited photos within 7 days (or 48 hours with Rush Delivery). Share, print, and treasure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policies + Calendly -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Schedule</p>
+          <h2 class="section-title">Pick Your Date</h2>
+        </div>
+
+        <div class="policies-box reveal">
+          <h3>Session Policies</h3>
+          <ul>
+            <li>Late arrivals receive reduced session time &mdash; we cannot extend past your window</li>
+            <li>Cancellations accepted 48+ hours in advance</li>
+            <li>Weather cancellations are always rescheduled at no charge</li>
+            <li>No-shows forfeit full payment</li>
+          </ul>
+        </div>
+
+        <div class="calendly-container reveal">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/ryantwhitt1/30min" style="min-width:320px;height:700px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner reveal">
+      <h2 class="cta-banner__title">Questions before booking?</h2>
+      <p class="cta-banner__text">We're happy to help. Reach out anytime.</p>
+      <a href="mailto:contact@dogwoodphotos.com" class="btn btn--primary">Email Us</a>
+    </section>
+  </div>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <p class="footer-logo">Dogwood Photos</p>
+          <p>A neighbor with a camera and a passion for people</p>
+        </div>
+        <div class="footer__links">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#" data-page="home">Home</a></li>
+            <li><a href="#" data-page="about">About</a></li>
+            <li><a href="#" data-page="services">Services</a></li>
+            <li><a href="#" data-page="pricing">Pricing</a></li>
+            <li><a href="#" data-page="faq">FAQ</a></li>
+            <li><a href="#" data-page="booking">Book Now</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <h4>Get in Touch</h4>
+          <a href="mailto:contact@dogwoodphotos.com">contact@dogwoodphotos.com</a>
+          <p>Wendell, NC &bull; Serving the Triangle</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; 2026 Dogwood Photos. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ===================== SCRIPTS ===================== -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <script>
+    // ---- SPA Navigation ----
+    function navigateTo(page) {
+      // Remove active/visible from all pages immediately
+      document.querySelectorAll('.page').forEach(p => {
+        p.classList.remove('visible');
+        p.classList.remove('active');
+      });
+
+      // Update nav links
+      document.querySelectorAll('[data-page]').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-page') === page) {
+          link.classList.add('active');
+        }
+      });
+
+      // Show target page
+      const target = document.getElementById('page-' + page);
+      if (target) {
+        target.classList.add('active');
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            target.classList.add('visible');
+          });
+        });
+      }
+      window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Re-trigger reveals on new page
+      setTimeout(initReveals, 100);
+
+      // Close mobile menu
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+
+      // Update URL hash
+      history.pushState(null, '', '#' + page);
+    }
+
+    // Bind all nav links
+    document.querySelectorAll('[data-page]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo(link.getAttribute('data-page'));
+      });
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', () => {
+      const page = location.hash.replace('#', '') || 'home';
+      navigateTo(page);
+    });
+
+    // Initial page from hash
+    const initialPage = location.hash.replace('#', '') || 'home';
+    if (initialPage !== 'home') {
+      navigateTo(initialPage);
+    } else {
+      document.getElementById('page-home').classList.add('visible');
+    }
+
+    // ---- Mobile Menu ----
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('hamburger').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+
+    // ---- Scroll Nav Shadow ----
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // ---- Accordion ----
+    document.querySelectorAll('.accordion__trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        // Close all in same accordion
+        item.closest('.accordion').querySelectorAll('.accordion__item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // ---- Scroll Reveal ----
+    function initReveals() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.reveal:not(.revealed)').forEach(el => observer.observe(el));
+    }
+
+    initReveals();
+  </script>
+
+</body>
+</html>
