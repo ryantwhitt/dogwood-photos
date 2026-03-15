@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dogwood Photos | Wendell, NC Photographer</title>
-  <meta name="description" content="Dogwood Photos — affordable 15-minute outdoor photo sessions in Wendell, NC. Book online instantly.">
+  <meta name="description" content="Dogwood Photos — affordable 15-minute outdoor photo mini sessions in Wendell, NC. Book online instantly.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,7 +110,7 @@
       cursor: pointer;
     }
 
-    .nav__logo svg { width: 44px; height: 36px; }
+    .nav__logo svg { width: 52px; height: 42px; }
 
     .nav__logo-text {
       display: flex;
@@ -121,13 +121,15 @@
     .nav__logo-text .dogwood {
       font-family: var(--font-display);
       font-size: 1.6rem;
+      font-weight: 700;
       color: var(--black);
+      margin-left: -9px;
     }
 
     .nav__logo-text .photos {
       font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 0.6rem;
+      font-weight: 700;
+      font-size: 0.7rem;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--blush-muted);
@@ -281,7 +283,7 @@
 
     .hero__title {
       font-family: var(--font-display);
-      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-size: clamp(4.5rem, 14vw, 11rem);
       color: var(--white);
       margin-bottom: 1.5rem;
       line-height: 1;
@@ -300,7 +302,7 @@
     .hero__tagline {
       font-family: var(--font-body);
       font-weight: 300;
-      font-size: 1rem;
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
       color: rgba(250, 248, 245, 0.7);
       font-style: italic;
       margin-bottom: 2.5rem;
@@ -934,6 +936,193 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* ===================== HERO DOGWOOD FLOWERS ===================== */
+    .hero__title-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero__title-wrapper .dogwood-flower {
+      position: absolute;
+      opacity: 0.35;
+    }
+
+    .hero__title-wrapper .dogwood-flower--tl {
+      top: -30px;
+      left: -60px;
+      transform: rotate(-25deg);
+    }
+
+    .hero__title-wrapper .dogwood-flower--tr {
+      top: -20px;
+      right: -55px;
+      transform: rotate(20deg);
+    }
+
+    .hero__title-wrapper .dogwood-flower--bl {
+      bottom: -15px;
+      left: -40px;
+      transform: rotate(-50deg) scale(0.8);
+    }
+
+    .hero__title-wrapper .dogwood-flower--br {
+      bottom: -20px;
+      right: -45px;
+      transform: rotate(40deg) scale(0.85);
+    }
+
+    .hero__title-wrapper .dogwood-flower--ml {
+      top: 50%;
+      left: -75px;
+      transform: translateY(-50%) rotate(-10deg) scale(0.7);
+    }
+
+    .hero__title-wrapper .dogwood-flower--mr {
+      top: 50%;
+      right: -70px;
+      transform: translateY(-50%) rotate(15deg) scale(0.75);
+    }
+
+    @media (max-width: 768px) {
+      .hero__title-wrapper .dogwood-flower { display: none; }
+    }
+
+    /* ===================== CAROUSEL ===================== */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel__track {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 1rem 0;
+    }
+
+    .carousel__track::-webkit-scrollbar { display: none; }
+
+    .carousel__item {
+      flex: 0 0 320px;
+      aspect-ratio: 4/5;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start;
+      transition: background 0.3s;
+    }
+
+    .carousel__item:hover { background: #eddcdc; }
+
+    .carousel__item span {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+    }
+
+    .carousel__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      background: rgba(250, 248, 245, 0.9);
+      border: 1px solid rgba(14, 12, 10, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--black);
+      z-index: 2;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .carousel__btn:hover { background: var(--blush); }
+    .carousel__btn--prev { left: 0.5rem; }
+    .carousel__btn--next { right: 0.5rem; }
+
+    @media (max-width: 768px) {
+      .carousel__item { flex: 0 0 260px; }
+    }
+
+    .view-gallery-link {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.85rem 2.5rem;
+      border: 1px solid var(--black);
+      color: var(--black);
+      transition: all 0.3s;
+      margin-top: 2rem;
+    }
+
+    .view-gallery-link:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ===================== ABOUT PHOTO SMALLER ===================== */
+    .about-photo--small {
+      aspect-ratio: 1/1;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ===================== SERVICES HEADING LARGER ===================== */
+    .hero--mini.hero--services .hero__title {
+      font-size: clamp(3.5rem, 10vw, 8rem);
+    }
+
+    /* ===================== GALLERY PAGE ===================== */
+    .gallery-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-page-grid__item {
+      aspect-ratio: 4/5;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-page-grid__item:hover {
+      background: #eddcdc;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.08);
+    }
+
+    .gallery-page-grid__item span {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-page-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-page-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -967,6 +1156,7 @@
         <li><a href="#" data-page="about">About</a></li>
         <li><a href="#" data-page="services">Services</a></li>
         <li><a href="#" data-page="pricing">Pricing</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="#" data-page="faq">FAQ</a></li>
         <li><a href="#" data-page="booking" class="nav__book-btn">Book Now</a></li>
       </ul>
@@ -984,6 +1174,7 @@
     <a href="#" data-page="about">About</a>
     <a href="#" data-page="services">Services</a>
     <a href="#" data-page="pricing">Pricing</a>
+    <a href="gallery.html">Gallery</a>
     <a href="#" data-page="faq">FAQ</a>
     <a href="#" data-page="booking">Book Now</a>
   </div>
@@ -996,8 +1187,53 @@
     <section class="hero">
       <div class="hero__bg"></div>
       <div class="hero__content">
-        <h1 class="hero__title">Dogwood Photos</h1>
-        <p class="hero__subtitle">Wendell, NC &bull; Outdoor Portrait Sessions</p>
+        <div class="hero__title-wrapper">
+          <!-- Dogwood flower outlines -->
+          <svg class="dogwood-flower dogwood-flower--tl" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
+          </svg>
+          <svg class="dogwood-flower dogwood-flower--tr" width="50" height="50" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
+          </svg>
+          <svg class="dogwood-flower dogwood-flower--bl" width="45" height="45" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
+          </svg>
+          <svg class="dogwood-flower dogwood-flower--br" width="48" height="48" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
+          </svg>
+          <svg class="dogwood-flower dogwood-flower--ml" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
+          </svg>
+          <svg class="dogwood-flower dogwood-flower--mr" width="42" height="42" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
+            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
+          </svg>
+          <h1 class="hero__title">Dogwood Photos</h1>
+        </div>
+        <p class="hero__subtitle">Wendell, NC &bull; Outdoor Portrait Mini Sessions</p>
         <p class="hero__tagline">&ldquo;A neighbor with a camera and a passion for people&rdquo;</p>
         <a href="#" class="hero__cta" data-page="booking">Book Your Session</a>
       </div>
@@ -1009,25 +1245,34 @@
         <div class="intro reveal">
           <p class="section-label">Welcome</p>
           <h2 class="section-title">Moments that matter</h2>
-          <p>Simple, affordable, beautiful. Dogwood Photos offers 15-minute outdoor micro sessions at local parks and public spaces throughout the Triangle area. No fancy studio, no overwhelming packages &mdash; just real moments with real people.</p>
+          <p>Simple, affordable, beautiful. Dogwood Photos offers 15-minute outdoor mini sessions at local parks and public spaces throughout the Triangle area. No fancy studio, no overwhelming packages &mdash; just real moments with real people.</p>
         </div>
       </div>
     </section>
 
-    <!-- Gallery -->
+    <!-- Gallery Carousel -->
     <section class="section section--alt">
       <div class="container">
         <div class="text-center mb-3 reveal">
           <p class="section-label">Portfolio</p>
           <h2 class="section-title">Recent Work</h2>
         </div>
-        <div class="gallery-grid reveal">
-          <div class="gallery-grid__item"><span>Your photo here</span></div>
-          <div class="gallery-grid__item gallery-grid__item--wide"><span>Your photo here</span></div>
-          <div class="gallery-grid__item gallery-grid__item--tall"><span>Your photo here</span></div>
-          <div class="gallery-grid__item"><span>Your photo here</span></div>
-          <div class="gallery-grid__item"><span>Your photo here</span></div>
-          <div class="gallery-grid__item"><span>Your photo here</span></div>
+        <div class="carousel reveal">
+          <button class="carousel__btn carousel__btn--prev" aria-label="Previous" onclick="document.getElementById('carouselTrack').scrollBy({left:-340,behavior:'smooth'})">&#8249;</button>
+          <div class="carousel__track" id="carouselTrack">
+            <div class="carousel__item"><span>Your photo here</span></div>
+            <div class="carousel__item"><span>Your photo here</span></div>
+            <div class="carousel__item"><span>Your photo here</span></div>
+            <div class="carousel__item"><span>Your photo here</span></div>
+            <div class="carousel__item"><span>Your photo here</span></div>
+            <div class="carousel__item"><span>Your photo here</span></div>
+            <div class="carousel__item"><span>Your photo here</span></div>
+            <div class="carousel__item"><span>Your photo here</span></div>
+          </div>
+          <button class="carousel__btn carousel__btn--next" aria-label="Next" onclick="document.getElementById('carouselTrack').scrollBy({left:340,behavior:'smooth'})">&#8250;</button>
+        </div>
+        <div class="text-center reveal">
+          <a href="gallery.html" class="view-gallery-link">View Full Gallery</a>
         </div>
       </div>
     </section>
@@ -1036,7 +1281,7 @@
     <section class="section">
       <div class="container">
         <div class="text-center mb-3 reveal">
-          <p class="section-label">Investment</p>
+          <p class="section-label">Pricing</p>
           <h2 class="section-title">Simple, Honest Pricing</h2>
         </div>
         <div class="pricing-grid reveal">
@@ -1078,9 +1323,6 @@
             <a href="STRIPE_LINK_RUSH" class="stripe-btn">Add Rush</a>
           </div>
         </div>
-        <div class="text-center mt-2 reveal">
-          <div class="rebooking-badge">Rebook within 60 days and save $5</div>
-        </div>
       </div>
     </section>
 
@@ -1113,14 +1355,14 @@
     <section class="section">
       <div class="container">
         <div class="about-content reveal">
-          <div class="about-photo">
+          <div class="about-photo about-photo--small">
             <span>Your photo here</span>
           </div>
           <div class="about-text">
             <p class="section-label">The Story</p>
             <h3>Dad, neighbor, photographer</h3>
             <p>Hey there &mdash; I'm the guy behind Dogwood Photos. Dad of two amazing girls, born and raised in the Triangle, and completely in love with this community.</p>
-            <p>What started as snapping photos of my daughters at the park turned into something bigger. Friends started asking, then their friends, then neighbors. I realized I could offer something different &mdash; quick, affordable sessions that don't eat up your whole Saturday.</p>
+            <p>What started as snapping photos of my daughters at the park turned into something bigger. Friends started asking, then their friends, then neighbors. I realized I could offer something different &mdash; quick, affordable mini sessions that don't eat up your whole Saturday.</p>
             <p>No stuffy studio. No hour-long poses. Just 15 minutes at a beautiful outdoor spot, and you walk away with photos you'll actually want to print. That's the Dogwood way.</p>
           </div>
         </div>
@@ -1147,7 +1389,7 @@
           <div class="value-item">
             <div class="value-item__icon">&#9201;</div>
             <h4>Time Matters</h4>
-            <p>Your time is valuable. Our 15-minute sessions prove you don't need hours to capture something beautiful.</p>
+            <p>Your time is valuable. Our 15-minute mini sessions prove you don't need hours to capture something beautiful.</p>
           </div>
         </div>
       </div>
@@ -1164,10 +1406,9 @@
   <!-- ===================== SERVICES PAGE ===================== -->
   <div class="page" id="page-services">
 
-    <section class="hero hero--mini">
+    <section class="hero hero--mini hero--services">
       <div class="hero__bg"></div>
       <div class="hero__content">
-        <p class="hero__subtitle">What We Offer</p>
         <h1 class="hero__title">Services</h1>
       </div>
     </section>
@@ -1175,14 +1416,14 @@
     <section class="section">
       <div class="container">
         <div class="text-center mb-3 reveal">
-          <p class="section-label">Our Sessions</p>
+          <p class="section-label">Our Mini Sessions</p>
           <h2 class="section-title">Something for Everyone</h2>
-          <p style="max-width:600px;margin:0 auto;font-weight:300;color:rgba(14,12,10,0.7);">All sessions are 15 minutes, outdoors, at a local park or public space of your choice. Simple, relaxed, and always affordable.</p>
+          <p style="max-width:600px;margin:0 auto;font-weight:300;color:rgba(14,12,10,0.7);">All mini sessions are 15 minutes, outdoors, at a local park or public space of your choice. Simple, relaxed, and always affordable.</p>
         </div>
         <div class="services-grid reveal">
           <div class="service-card">
             <div class="service-card__icon">&#128106;</div>
-            <h3>Family Sessions</h3>
+            <h3>Family Mini Sessions</h3>
             <p>Capture your crew in a relaxed outdoor setting. Perfect for holiday cards, milestone moments, or just-because photos.</p>
           </div>
           <div class="service-card">
@@ -1216,7 +1457,7 @@
 
     <section class="cta-banner reveal">
       <h2 class="cta-banner__title">Don't see what you need?</h2>
-      <p class="cta-banner__text">Reach out &mdash; we're happy to chat about custom sessions.</p>
+      <p class="cta-banner__text">Reach out &mdash; we're happy to chat about custom mini sessions.</p>
       <a href="mailto:contact@dogwoodphotos.com" class="btn btn--primary">Email Us</a>
     </section>
   </div>
@@ -1228,7 +1469,6 @@
     <section class="hero hero--mini">
       <div class="hero__bg"></div>
       <div class="hero__content">
-        <p class="hero__subtitle">Simple &amp; Transparent</p>
         <h1 class="hero__title">Pricing</h1>
       </div>
     </section>
@@ -1273,9 +1513,6 @@
             </ul>
             <a href="STRIPE_LINK_RUSH" class="stripe-btn">Add Rush</a>
           </div>
-        </div>
-        <div class="text-center mt-2 reveal">
-          <div class="rebooking-badge">Rebook within 60 days and save $5</div>
         </div>
       </div>
     </section>
@@ -1349,15 +1586,15 @@
         </div>
         <div class="accordion reveal">
           <div class="accordion__item">
-            <button class="accordion__trigger">How long is a session? <span>+</span></button>
+            <button class="accordion__trigger">How long is a mini session? <span>+</span></button>
             <div class="accordion__content">
-              <p>All sessions are 15 minutes. It's quick, fun, and you'll be surprised how many great shots we can capture in that time.</p>
+              <p>All mini sessions are 15 minutes. It's quick, fun, and you'll be surprised how many great shots we can capture in that time.</p>
             </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__trigger">Where do sessions take place? <span>+</span></button>
+            <button class="accordion__trigger">Where do mini sessions take place? <span>+</span></button>
             <div class="accordion__content">
-              <p>Sessions happen outdoors at local parks and public spaces in the Wendell and Triangle area. You can pick a location you love, or I'm happy to suggest beautiful spots nearby.</p>
+              <p>Mini sessions happen outdoors at local parks and public spaces in the Wendell and Triangle area. You can pick a location you love, or I'm happy to suggest beautiful spots nearby.</p>
             </div>
           </div>
           <div class="accordion__item">
@@ -1397,9 +1634,9 @@
             </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__trigger">How many people can be in a session? <span>+</span></button>
+            <button class="accordion__trigger">How many people can be in a mini session? <span>+</span></button>
             <div class="accordion__content">
-              <p>Our sessions work great for individuals, couples, and families up to about 6 people. For larger groups, reach out and we'll find the right setup for you.</p>
+              <p>Our mini sessions work great for individuals, couples, and families up to about 6 people. For larger groups, reach out and we'll find the right setup for you.</p>
             </div>
           </div>
           <div class="accordion__item">
@@ -1505,6 +1742,7 @@
             <li><a href="#" data-page="about">About</a></li>
             <li><a href="#" data-page="services">Services</a></li>
             <li><a href="#" data-page="pricing">Pricing</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="#" data-page="faq">FAQ</a></li>
             <li><a href="#" data-page="booking">Book Now</a></li>
           </ul>

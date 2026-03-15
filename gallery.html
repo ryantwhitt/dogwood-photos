@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Dogwood Photos</title>
+  <meta name="description" content="Browse the Dogwood Photos gallery — outdoor portrait mini sessions in Wendell, NC.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0e0c0a;
+      --white: #faf8f5;
+      --blush: #E8C7C8;
+      --blush-light: #f3e8e8;
+      --blush-muted: #c9a8a8;
+      --font-display: 'Great Vibes', cursive;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ===================== NAVIGATION ===================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(14, 12, 10, 0.06);
+      transition: box-shadow 0.3s;
+    }
+
+    .nav.scrolled {
+      box-shadow: 0 2px 20px rgba(14, 12, 10, 0.08);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .nav__logo svg { width: 52px; height: 42px; }
+
+    .nav__logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav__logo-text .dogwood {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-left: -9px;
+    }
+
+    .nav__logo-text .photos {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+      margin-top: 2px;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--black);
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--blush);
+      transition: width 0.3s;
+    }
+
+    .nav__links a:hover::after,
+    .nav__links a.active::after {
+      width: 100%;
+    }
+
+    .nav__links a:hover { color: var(--blush-muted); }
+
+    .nav__book-btn {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.6rem 1.5rem;
+      background: var(--blush);
+      color: var(--black);
+      border-radius: 0;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav__book-btn:hover {
+      background: var(--blush-muted);
+      color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    /* Mobile menu */
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--black);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav__hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
+
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--white);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav__mobile.open { display: flex; }
+
+    .nav__mobile a {
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .nav__book-btn { display: none; }
+      .nav__hamburger { display: flex; }
+    }
+
+    /* ===================== LAYOUT ===================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section { padding: 6rem 0; }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+      padding-top: 72px;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: var(--blush-light);
+      opacity: 0.15;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 2rem;
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      line-height: 1;
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: clamp(0.9rem, 2vw, 1.15rem);
+      color: var(--blush);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ===================== GALLERY GRID ===================== */
+    .gallery-page-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-page-grid__item {
+      aspect-ratio: 4/5;
+      background: var(--blush-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-page-grid__item:hover {
+      background: #eddcdc;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.08);
+    }
+
+    .gallery-page-grid__item span {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-page-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-page-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== CTA BANNER ===================== */
+    .cta-banner {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: var(--blush-light);
+    }
+
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner__text {
+      font-weight: 300;
+      font-size: 1rem;
+      color: rgba(14, 12, 10, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.85rem 2.5rem;
+      transition: all 0.3s;
+    }
+
+    .btn--primary {
+      background: var(--blush);
+      color: var(--black);
+    }
+
+    .btn--primary:hover {
+      background: var(--blush-muted);
+      color: var(--white);
+    }
+
+    /* ===================== FOOTER ===================== */
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer__brand .footer-logo {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer__brand p {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.5);
+      font-style: italic;
+    }
+
+    .footer__links h4,
+    .footer__contact h4 {
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 1rem;
+    }
+
+    .footer__links ul { list-style: none; }
+
+    .footer__links li { padding: 0.3rem 0; }
+
+    .footer__links a {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.6);
+      transition: color 0.3s;
+    }
+
+    .footer__links a:hover { color: var(--blush); }
+
+    .footer__contact a {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.6);
+      transition: color 0.3s;
+    }
+
+    .footer__contact a:hover { color: var(--blush); }
+
+    .footer__contact p {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(250, 248, 245, 0.5);
+      margin-top: 0.5rem;
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(250, 248, 245, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-weight: 300;
+      font-size: 0.75rem;
+      color: rgba(250, 248, 245, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .footer__inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    }
+
+    /* ===================== UTILITIES ===================== */
+    .text-center { text-align: center; }
+    .mb-3 { margin-bottom: 3rem; }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--black);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="40" height="26" rx="3" stroke="#0e0c0a" stroke-width="1.8" fill="none"/>
+          <path d="M15 8 L18 3 L26 3 L29 8" stroke="#0e0c0a" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <circle cx="22" cy="21" r="9" stroke="#0e0c0a" stroke-width="1.5" fill="none"/>
+          <ellipse cx="22" cy="16" rx="2.8" ry="4" fill="#E8C7C8"/>
+          <ellipse cx="27" cy="21" rx="4" ry="2.8" fill="#E8C7C8"/>
+          <ellipse cx="22" cy="26" rx="2.8" ry="4" fill="#E8C7C8"/>
+          <ellipse cx="17" cy="21" rx="4" ry="2.8" fill="#E8C7C8"/>
+          <circle cx="22" cy="21" r="1.5" fill="#0e0c0a"/>
+        </svg>
+        <div class="nav__logo-text">
+          <span class="dogwood">Dogwood</span>
+          <span class="photos">Photos</span>
+        </div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#booking" class="nav__book-btn">Book Now</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="nav__mobile" id="mobileMenu">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#booking">Book Now</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <p class="hero__subtitle">Portfolio</p>
+      <h1 class="hero__title">Gallery</h1>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-3 reveal">
+        <p class="section-label">Our Work</p>
+        <h2 class="section-title">Curated Moments</h2>
+      </div>
+      <div class="gallery-page-grid reveal">
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner reveal">
+    <h2 class="cta-banner__title">Love what you see?</h2>
+    <p class="cta-banner__text">Book your own mini session and be part of the gallery.</p>
+    <a href="index.html#booking" class="btn btn--primary">Book Now</a>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <p class="footer-logo">Dogwood Photos</p>
+          <p>A neighbor with a camera and a passion for people</p>
+        </div>
+        <div class="footer__links">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#booking">Book Now</a></li>
+          </ul>
+        </div>
+        <div class="footer__contact">
+          <h4>Get in Touch</h4>
+          <a href="mailto:contact@dogwoodphotos.com">contact@dogwoodphotos.com</a>
+          <p>Wendell, NC &bull; Serving the Triangle</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        &copy; 2026 Dogwood Photos. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('hamburger').classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+
+    // Scroll Nav Shadow
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
