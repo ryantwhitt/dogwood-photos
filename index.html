@@ -328,7 +328,7 @@
 
     /* Mini hero for inner pages */
     .hero--mini {
-      min-height: 50vh;
+      min-height: 30vh;
     }
 
     .hero--mini .hero__title {
@@ -813,6 +813,8 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 3rem;
       margin-bottom: 3rem;
+      justify-items: center;
+      text-align: center;
     }
 
     .footer__brand .footer-logo {
@@ -910,19 +912,6 @@
     .stripe-btn:hover {
       background: var(--blush-muted);
       color: var(--white);
-    }
-
-    /* Rebooking badge */
-    .rebooking-badge {
-      display: inline-block;
-      background: var(--blush-light);
-      color: var(--blush-muted);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      margin-top: 1.5rem;
     }
 
     /* Scroll reveal */
@@ -1075,7 +1064,7 @@
     /* ===================== ABOUT PHOTO SMALLER ===================== */
     .about-photo--small {
       aspect-ratio: 1/1;
-      max-width: 320px;
+      max-width: 640px;
       margin: 0 auto;
     }
 
@@ -1156,7 +1145,7 @@
         <li><a href="#" data-page="about">About</a></li>
         <li><a href="#" data-page="services">Services</a></li>
         <li><a href="#" data-page="pricing">Pricing</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="/dogwood-photos/gallery.html">Gallery</a></li>
         <li><a href="#" data-page="faq">FAQ</a></li>
         <li><a href="#" data-page="booking" class="nav__book-btn">Book Now</a></li>
       </ul>
@@ -1174,7 +1163,7 @@
     <a href="#" data-page="about">About</a>
     <a href="#" data-page="services">Services</a>
     <a href="#" data-page="pricing">Pricing</a>
-    <a href="gallery.html">Gallery</a>
+    <a href="/dogwood-photos/gallery.html">Gallery</a>
     <a href="#" data-page="faq">FAQ</a>
     <a href="#" data-page="booking">Book Now</a>
   </div>
@@ -1254,7 +1243,6 @@
     <section class="section section--alt">
       <div class="container">
         <div class="text-center mb-3 reveal">
-          <p class="section-label">Portfolio</p>
           <h2 class="section-title">Recent Work</h2>
         </div>
         <div class="carousel reveal">
@@ -1272,7 +1260,7 @@
           <button class="carousel__btn carousel__btn--next" aria-label="Next" onclick="document.getElementById('carouselTrack').scrollBy({left:340,behavior:'smooth'})">&#8250;</button>
         </div>
         <div class="text-center reveal">
-          <a href="gallery.html" class="view-gallery-link">View Full Gallery</a>
+          <a href="/dogwood-photos/gallery.html" class="view-gallery-link">View Full Gallery</a>
         </div>
       </div>
     </section>
@@ -1347,7 +1335,6 @@
     <section class="hero hero--mini">
       <div class="hero__bg"></div>
       <div class="hero__content">
-        <p class="hero__subtitle">Get to Know Us</p>
         <h1 class="hero__title">About Dogwood</h1>
       </div>
     </section>
@@ -1538,9 +1525,9 @@
             </div>
           </div>
           <div class="accordion__item">
-            <button class="accordion__trigger">How does the rebooking discount work? <span>+</span></button>
+            <button class="accordion__trigger">Do you offer a referral discount? <span>+</span></button>
             <div class="accordion__content">
-              <p>If you book another session within 60 days of your last one, you automatically get $5 off. Just mention your previous session when booking and we'll apply the discount.</p>
+              <p>Yes! If you refer a friend or family to Dogwood Photos, you'll receive $5 off your next session once they book. The new family also gets $5 off their first session. Just have them enter your name in the referral field when booking — we'll take it from there!</p>
             </div>
           </div>
           <div class="accordion__item">
@@ -1742,7 +1729,7 @@
             <li><a href="#" data-page="about">About</a></li>
             <li><a href="#" data-page="services">Services</a></li>
             <li><a href="#" data-page="pricing">Pricing</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="/dogwood-photos/gallery.html">Gallery</a></li>
             <li><a href="#" data-page="faq">FAQ</a></li>
             <li><a href="#" data-page="booking">Book Now</a></li>
           </ul>
