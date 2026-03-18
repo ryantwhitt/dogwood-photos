@@ -346,7 +346,7 @@
 
     .hero-new__location {
       font-family: var(--font-body);
-      font-weight: 300;
+      font-weight: 500;
       font-size: 13px;
       color: #E8C7C8;
       letter-spacing: 3.5px;
@@ -1646,12 +1646,17 @@
       <!-- Dogwood tree SVG background — detailed naturalistic silhouette -->
       <svg class="hero-new__tree" viewBox="0 0 1000 1200" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g stroke="#E8C7C8" stroke-linecap="round" fill="none">
-          <!-- Trunk — thick, slightly curved, with character -->
-          <path d="M500 1200 C498 1120, 496 1060, 497 1000 C498 940, 502 880, 500 820 C498 760, 496 720, 498 680" stroke-width="5" opacity="0.14"/>
-          <path d="M500 1200 C502 1140, 504 1080, 503 1020 C502 960, 498 900, 500 840" stroke-width="4" opacity="0.10"/>
+          <!-- Trunk — thick tapered base narrowing upward, filled shape -->
+          <path d="M475 1200 C476 1160, 478 1120, 480 1080 C482 1040, 484 1000, 486 960 C488 920, 490 880, 492 840 C494 800, 496 760, 497 720 C498 700, 498 690, 498 680 L502 680 C502 690, 502 700, 503 720 C504 760, 506 800, 508 840 C510 880, 512 920, 514 960 C516 1000, 518 1040, 520 1080 C522 1120, 524 1160, 525 1200 Z" fill="#E8C7C8" opacity="0.11" stroke="none"/>
+          <!-- Trunk outline strokes for detail -->
+          <path d="M475 1200 C476 1160, 478 1120, 480 1080 C482 1040, 484 1000, 486 960 C488 920, 490 880, 492 840 C494 800, 496 760, 498 680" stroke-width="1.5" opacity="0.13"/>
+          <path d="M525 1200 C524 1160, 522 1120, 520 1080 C518 1040, 516 1000, 514 960 C512 920, 510 880, 508 840 C506 800, 504 760, 502 680" stroke-width="1.5" opacity="0.13"/>
           <!-- Trunk bark texture lines -->
-          <path d="M497 1100 C496 1060, 498 1020, 497 980" stroke-width="1" opacity="0.06"/>
-          <path d="M503 1080 C504 1040, 502 1000, 503 960" stroke-width="1" opacity="0.06"/>
+          <path d="M490 1150 C489 1100, 491 1050, 490 1000 C491 950, 493 900, 494 850" stroke-width="0.8" opacity="0.07"/>
+          <path d="M510 1130 C511 1080, 509 1030, 510 980 C509 930, 507 880, 506 830" stroke-width="0.8" opacity="0.07"/>
+          <path d="M498 1180 C497 1130, 499 1080, 498 1030 C499 980, 500 930, 500 880" stroke-width="0.6" opacity="0.05"/>
+          <path d="M485 1060 C486 1020, 488 980, 490 940" stroke-width="0.5" opacity="0.05"/>
+          <path d="M515 1040 C514 1000, 512 960, 510 920" stroke-width="0.5" opacity="0.05"/>
 
           <!-- === PRIMARY SCAFFOLD BRANCHES === -->
           <!-- Left main branch -->
@@ -1825,7 +1830,7 @@
       <!-- Text content -->
       <div class="hero-new__content">
         <h1 class="hero-new__title">Dogwood Photos</h1>
-        <p class="hero-new__location">Based in Wendell &middot; Serving the Triangle</p>
+        <p class="hero-new__location">Based in Wendell, NC &middot; Serving the Triangle</p>
         <p class="hero-new__sessions">Outdoor Portrait Mini Sessions</p>
         <div class="hero-new__divider"></div>
         <p class="hero-new__tagline">A neighbor with a camera and a passion for people</p>
@@ -2577,11 +2582,14 @@
         var animName = Math.random() > 0.5 ? 'petalFall' : 'petalSwirl';
         el.style.animation = animName + ' ' + duration + 's linear forwards';
 
-        el.innerHTML = '<svg viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + (size * 1.33) + '">' +
-          '<path d="M12 0 C16 8, 20 16, 12 32 C4 16, 8 8, 12 0Z" fill="rgb(' + r + ',' + g + ',' + b + ')" opacity="0.8"/>' +
-          '<line x1="12" y1="4" x2="12" y2="28" stroke="rgb(' + (r - 20) + ',' + (g - 20) + ',' + (b - 20) + ')" stroke-width="0.5" opacity="0.4"/>' +
-          '<line x1="12" y1="12" x2="8" y2="16" stroke="rgb(' + (r - 20) + ',' + (g - 20) + ',' + (b - 20) + ')" stroke-width="0.3" opacity="0.3"/>' +
-          '<line x1="12" y1="14" x2="16" y2="18" stroke="rgb(' + (r - 20) + ',' + (g - 20) + ',' + (b - 20) + ')" stroke-width="0.3" opacity="0.3"/>' +
+        var fc = 'rgb(' + r + ',' + g + ',' + b + ')';
+        var dc = 'rgb(' + Math.max(0,r-30) + ',' + Math.max(0,g-30) + ',' + Math.max(0,b-30) + ')';
+        el.innerHTML = '<svg viewBox="-14 -14 28 28" xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + size + '">' +
+          '<path d="M0 -12 C4 -7, 5 -2, 0 3 C-5 -2, -4 -7, 0 -12Z" fill="' + fc + '" opacity="0.85"/>' +
+          '<path d="M12 0 C7 4, 2 5, -3 0 C2 -5, 7 -4, 12 0Z" fill="' + fc + '" opacity="0.8"/>' +
+          '<path d="M0 12 C-4 7, -5 2, 0 -3 C5 2, 4 7, 0 12Z" fill="' + fc + '" opacity="0.85"/>' +
+          '<path d="M-12 0 C-7 -4, -2 -5, 3 0 C-2 5, -7 4, -12 0Z" fill="' + fc + '" opacity="0.8"/>' +
+          '<circle cx="0" cy="0" r="2.2" fill="' + dc + '" opacity="0.6"/>' +
           '</svg>';
 
         container.appendChild(el);
