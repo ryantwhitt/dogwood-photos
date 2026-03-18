@@ -470,6 +470,67 @@
 
     .pricing-card__features li:last-child { border: none; }
 
+    .pricing-card__tagline {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--blush-muted);
+      margin-bottom: 1rem;
+    }
+
+    .pricing-card__desc {
+      font-weight: 300;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: rgba(14, 12, 10, 0.65);
+      margin-bottom: 2rem;
+    }
+
+    /* ===================== LOCATION CARDS ===================== */
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .location-card {
+      background: var(--white);
+      padding: 2rem;
+      border: 1px solid rgba(14, 12, 10, 0.06);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .location-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.06);
+    }
+
+    .location-card__name {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-card__date {
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+      margin-bottom: 1rem;
+    }
+
+    .location-card__desc {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: rgba(14, 12, 10, 0.6);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
     /* ===================== BUTTONS ===================== */
     .btn {
       display: inline-block;
@@ -1146,6 +1207,7 @@
         <li><a href="#" data-page="services">Services</a></li>
         <li><a href="#" data-page="pricing">Pricing</a></li>
         <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/locations.html">Locations</a></li>
         <li><a href="#" data-page="faq">FAQ</a></li>
         <li><a href="#" data-page="booking" class="nav__book-btn">Book Now</a></li>
       </ul>
@@ -1164,6 +1226,7 @@
     <a href="#" data-page="services">Services</a>
     <a href="#" data-page="pricing">Pricing</a>
     <a href="/gallery.html">Gallery</a>
+    <a href="/locations.html">Locations</a>
     <a href="#" data-page="faq">FAQ</a>
     <a href="#" data-page="booking">Book Now</a>
   </div>
@@ -1265,6 +1328,39 @@
       </div>
     </section>
 
+    <!-- Where We'll Be -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Upcoming</p>
+          <h2 class="section-title">Where We'll Be</h2>
+        </div>
+        <div class="location-grid reveal">
+          <!-- Location Card 1 — Edit name, date, and description each week -->
+          <div class="location-card">
+            <p class="location-card__name">Johnston Mill Nature Preserve</p>
+            <p class="location-card__date">Week of March 23</p>
+            <p class="location-card__desc">Wildflowers in peak bloom, gorgeous wooded trails</p>
+          </div>
+          <!-- Location Card 2 — Edit name, date, and description each week -->
+          <div class="location-card">
+            <p class="location-card__name">Kellie's Ridge Park, Wendell</p>
+            <p class="location-card__date">Week of March 30</p>
+            <p class="location-card__desc">Open fields and golden hour views</p>
+          </div>
+          <!-- Location Card 3 — Edit or remove as needed -->
+          <div class="location-card">
+            <p class="location-card__name">Custom Location</p>
+            <p class="location-card__date">Ongoing</p>
+            <p class="location-card__desc">Have somewhere special in mind? Let's make it happen</p>
+          </div>
+        </div>
+        <div class="text-center mt-2 reveal">
+          <a href="/locations.html" class="btn btn--outline">View Full Schedule</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Pricing Preview -->
     <section class="section">
       <div class="container">
@@ -1277,39 +1373,34 @@
           <div class="pricing-card">
             <p class="pricing-card__name">Base Session</p>
             <p class="pricing-card__price">$40</p>
-            <ul class="pricing-card__features">
-              <li>15-minute outdoor session</li>
-              <li>2 professionally edited photos</li>
-              <li>Delivered in 7 days</li>
-              <li>Local parks &amp; public spaces</li>
-            </ul>
-            <!-- TODO: Replace STRIPE_LINK_BASE, STRIPE_LINK_FULL, STRIPE_LINK_RUSH with real Stripe payment links once account is verified -->
+            <p class="pricing-card__tagline">Your session, your favorites.</p>
+            <p class="pricing-card__desc">We capture your session and deliver all photos in an online gallery &mdash; watermarked and unedited, so you can see everything we got. Browse at your own pace, then pick your 2 favorites. We'll edit them, remove the watermarks, and deliver them back to you within 7 days. Beautiful photos without the guesswork.</p>
             <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Base</a>
           </div>
           <!-- Full Gallery -->
           <div class="pricing-card pricing-card--featured">
             <p class="pricing-card__name">Full Gallery</p>
             <p class="pricing-card__price">$60</p>
-            <ul class="pricing-card__features">
-              <li>Everything in Base Session</li>
-              <li>All edited photos included</li>
-              <li>No watermarks</li>
-              <li>Delivered in 7 days</li>
-            </ul>
+            <p class="pricing-card__tagline">Every moment, fully edited.</p>
+            <p class="pricing-card__desc">We capture your session and handle everything from there. Every photo professionally edited, watermark-free, and delivered to your online gallery within 10 days. No choosing, no decisions &mdash; just open your gallery and love what you see.</p>
             <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Full Gallery</a>
           </div>
           <!-- Rush -->
           <div class="pricing-card">
             <p class="pricing-card__name">Rush Delivery</p>
             <p class="pricing-card__price">+$20</p>
-            <ul class="pricing-card__features">
-              <li>Add to any session package</li>
-              <li>Photos delivered in 48 hours</li>
-              <li>Same professional editing</li>
-              <li>Perfect for gifts &amp; deadlines</li>
-            </ul>
+            <p class="pricing-card__tagline">Can't wait? We get it.</p>
+            <p class="pricing-card__desc">Add to the Base Session only. Get your 2 edited photos back in 48 hours instead of 7 days. Perfect for gifts, announcements, or when you just can't wait.</p>
             <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Add Rush</a>
           </div>
+        </div>
+
+        <!-- Something Different -->
+        <div class="text-center mt-3 reveal">
+          <h3 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Something Different in Mind?</h3>
+          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; line-height: 1.8; color: rgba(14,12,10,0.7);">Every family, couple, and moment is unique &mdash; and we get that. If you have a special request, a specific location, a larger group, or something outside our standard packages, just reach out. We're happy to work with you on something custom.</p>
+          <p style="margin-top: 1rem;"><a href="mailto:dogwoodphotosnc@gmail.com" style="color: var(--blush-muted); font-weight: 500;">Email us at dogwoodphotosnc@gmail.com</a></p>
+          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; font-size: 0.9rem; color: rgba(14,12,10,0.5); font-style: italic;">Custom sessions are priced based on your needs &mdash; but we'll always be upfront and fair about it.</p>
         </div>
       </div>
     </section>
@@ -1445,7 +1536,7 @@
     <section class="cta-banner reveal">
       <h2 class="cta-banner__title">Don't see what you need?</h2>
       <p class="cta-banner__text">Reach out &mdash; we're happy to chat about custom mini sessions.</p>
-      <a href="mailto:contact@dogwoodphotos.com" class="btn btn--primary">Email Us</a>
+      <a href="mailto:dogwoodphotosnc@gmail.com" class="btn btn--primary">Email Us</a>
     </section>
   </div>
 
@@ -1470,36 +1561,32 @@
           <div class="pricing-card">
             <p class="pricing-card__name">Base Session</p>
             <p class="pricing-card__price">$40</p>
-            <ul class="pricing-card__features">
-              <li>15-minute outdoor session</li>
-              <li>2 professionally edited photos</li>
-              <li>Delivered in 7 days</li>
-              <li>Local parks &amp; public spaces</li>
-            </ul>
+            <p class="pricing-card__tagline">Your session, your favorites.</p>
+            <p class="pricing-card__desc">We capture your session and deliver all photos in an online gallery &mdash; watermarked and unedited, so you can see everything we got. Browse at your own pace, then pick your 2 favorites. We'll edit them, remove the watermarks, and deliver them back to you within 7 days. Beautiful photos without the guesswork.</p>
             <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Base</a>
           </div>
           <div class="pricing-card pricing-card--featured">
             <p class="pricing-card__name">Full Gallery</p>
             <p class="pricing-card__price">$60</p>
-            <ul class="pricing-card__features">
-              <li>Everything in Base Session</li>
-              <li>All edited photos included</li>
-              <li>No watermarks</li>
-              <li>Delivered in 7 days</li>
-            </ul>
+            <p class="pricing-card__tagline">Every moment, fully edited.</p>
+            <p class="pricing-card__desc">We capture your session and handle everything from there. Every photo professionally edited, watermark-free, and delivered to your online gallery within 10 days. No choosing, no decisions &mdash; just open your gallery and love what you see.</p>
             <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Full Gallery</a>
           </div>
           <div class="pricing-card">
             <p class="pricing-card__name">Rush Delivery</p>
             <p class="pricing-card__price">+$20</p>
-            <ul class="pricing-card__features">
-              <li>Add to any session package</li>
-              <li>Photos delivered in 48 hours</li>
-              <li>Same professional editing</li>
-              <li>Perfect for gifts &amp; deadlines</li>
-            </ul>
+            <p class="pricing-card__tagline">Can't wait? We get it.</p>
+            <p class="pricing-card__desc">Add to the Base Session only. Get your 2 edited photos back in 48 hours instead of 7 days. Perfect for gifts, announcements, or when you just can't wait.</p>
             <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Add Rush</a>
           </div>
+        </div>
+
+        <!-- Something Different -->
+        <div class="text-center mt-3 reveal">
+          <h3 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Something Different in Mind?</h3>
+          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; line-height: 1.8; color: rgba(14,12,10,0.7);">Every family, couple, and moment is unique &mdash; and we get that. If you have a special request, a specific location, a larger group, or something outside our standard packages, just reach out. We're happy to work with you on something custom.</p>
+          <p style="margin-top: 1rem;"><a href="mailto:dogwoodphotosnc@gmail.com" style="color: var(--blush-muted); font-weight: 500;">Email us at dogwoodphotosnc@gmail.com</a></p>
+          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; font-size: 0.9rem; color: rgba(14,12,10,0.5); font-style: italic;">Custom sessions are priced based on your needs &mdash; but we'll always be upfront and fair about it.</p>
         </div>
       </div>
     </section>
@@ -1639,7 +1726,7 @@
     <section class="cta-banner reveal">
       <h2 class="cta-banner__title">Still have questions?</h2>
       <p class="cta-banner__text">We'd love to hear from you. No question is too small.</p>
-      <a href="mailto:contact@dogwoodphotos.com" class="btn btn--primary">Email Us</a>
+      <a href="mailto:dogwoodphotosnc@gmail.com" class="btn btn--primary">Email Us</a>
     </section>
   </div>
 
@@ -1709,7 +1796,7 @@
     <section class="cta-banner reveal">
       <h2 class="cta-banner__title">Questions before booking?</h2>
       <p class="cta-banner__text">We're happy to help. Reach out anytime.</p>
-      <a href="mailto:contact@dogwoodphotos.com" class="btn btn--primary">Email Us</a>
+      <a href="mailto:dogwoodphotosnc@gmail.com" class="btn btn--primary">Email Us</a>
     </section>
   </div>
 
@@ -1730,13 +1817,14 @@
             <li><a href="#" data-page="services">Services</a></li>
             <li><a href="#" data-page="pricing">Pricing</a></li>
             <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/locations.html">Locations</a></li>
             <li><a href="#" data-page="faq">FAQ</a></li>
             <li><a href="#" data-page="booking">Book Now</a></li>
           </ul>
         </div>
         <div class="footer__contact">
           <h4>Get in Touch</h4>
-          <a href="mailto:contact@dogwoodphotos.com">contact@dogwoodphotos.com</a>
+          <a href="mailto:dogwoodphotosnc@gmail.com">dogwoodphotosnc@gmail.com</a>
           <p>Wendell, NC &bull; Serving the Triangle</p>
         </div>
       </div>

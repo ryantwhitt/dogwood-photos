@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery | Dogwood Photos</title>
-  <meta name="description" content="Browse the Dogwood Photos gallery — outdoor portrait mini sessions in Wendell, NC.">
+  <title>Session Locations | Dogwood Photos</title>
+  <meta name="description" content="See where Dogwood Photos is heading next — upcoming outdoor mini session locations in Wendell, NC and the Triangle area.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,185 +29,17 @@
       font-weight: 400;
       color: var(--black);
       background: var(--white);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    a { text-decoration: none; color: inherit; }
 
-    /* ===================== NAVIGATION ===================== */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(250, 248, 245, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(14, 12, 10, 0.06);
-      transition: box-shadow 0.3s;
-    }
-
-    .nav.scrolled {
-      box-shadow: 0 2px 20px rgba(14, 12, 10, 0.08);
-    }
-
-    .nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nav__logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      cursor: pointer;
-    }
-
-    .nav__logo svg { width: 52px; height: 42px; }
-
-    .nav__logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .nav__logo-text .dogwood {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--black);
-      margin-left: -9px;
-    }
-
-    .nav__logo-text .photos {
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 0.7rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--blush-muted);
-      margin-top: 2px;
-    }
-
-    .nav__links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav__links a {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--black);
-      position: relative;
-      transition: color 0.3s;
-    }
-
-    .nav__links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1.5px;
-      background: var(--blush);
-      transition: width 0.3s;
-    }
-
-    .nav__links a:hover::after,
-    .nav__links a.active::after {
-      width: 100%;
-    }
-
-    .nav__links a:hover { color: var(--blush-muted); }
-
-    .nav__book-btn {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 0.6rem 1.5rem;
-      background: var(--blush);
-      color: var(--black);
-      border-radius: 0;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .nav__book-btn:hover {
-      background: var(--blush-muted);
-      color: var(--white);
-      transform: translateY(-1px);
-    }
-
-    /* Mobile menu */
-    .nav__hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 4px;
-    }
-
-    .nav__hamburger span {
-      display: block;
-      width: 24px;
-      height: 1.5px;
-      background: var(--black);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    .nav__hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
-    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav__hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -5px); }
-
-    .nav__mobile {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--white);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .nav__mobile.open { display: flex; }
-
-    .nav__mobile a {
-      font-size: 1.2rem;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--black);
-    }
-
-    @media (max-width: 768px) {
-      .nav__links { display: none; }
-      .nav__book-btn { display: none; }
-      .nav__hamburger { display: flex; }
-    }
-
-    /* ===================== LAYOUT ===================== */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
     .section { padding: 6rem 0; }
+    .section--alt { background: var(--blush-light); }
+    .text-center { text-align: center; }
+    .mb-3 { margin-bottom: 3rem; }
+    .mt-2 { margin-top: 2rem; }
+    .mt-3 { margin-top: 3rem; }
 
     /* ===================== HERO ===================== */
     .hero {
@@ -239,87 +71,215 @@
       font-family: var(--font-display);
       font-size: clamp(3rem, 8vw, 6rem);
       color: var(--white);
-      margin-bottom: 1.5rem;
       line-height: 1;
     }
 
-    .hero__subtitle {
-      font-family: var(--font-body);
-      font-weight: 300;
-      font-size: clamp(0.9rem, 2vw, 1.15rem);
-      color: var(--blush);
-      letter-spacing: 3px;
-      text-transform: uppercase;
+    /* ===================== NAV ===================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--white);
+      transition: box-shadow 0.3s;
     }
 
-    /* ===================== GALLERY GRID ===================== */
-    .gallery-page-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
+    .nav--scrolled { box-shadow: 0 2px 20px rgba(14, 12, 10, 0.08); }
 
-    .gallery-page-grid__item {
-      aspect-ratio: 4/5;
-      background: var(--blush-light);
+    .nav__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
+      justify-content: space-between;
     }
 
-    .gallery-page-grid__item:hover {
-      background: #eddcdc;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.08);
+    .nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .gallery-page-grid__item span {
+    .nav__logo svg { width: 52px; height: 42px; }
+
+    .nav__logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav__logo-text .dogwood {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-left: -9px;
+    }
+
+    .nav__logo-text .photos {
       font-family: var(--font-body);
-      font-weight: 500;
+      font-weight: 700;
       font-size: 0.7rem;
-      letter-spacing: 2px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--blush-muted);
+      margin-top: 2px;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--black);
+      transition: color 0.3s;
+    }
+
+    .nav__links a:hover,
+    .nav__links a.active { color: var(--blush-muted); }
+
+    .nav__book-btn {
+      background: var(--blush);
+      color: var(--black) !important;
+      padding: 0.6rem 1.5rem;
+    }
+
+    .nav__book-btn:hover {
+      background: var(--blush-muted);
+      color: var(--white) !important;
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .nav__hamburger span {
+      width: 24px;
+      height: 2px;
+      background: var(--black);
+      transition: 0.3s;
+    }
+
+    /* Mobile menu */
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--white);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav__mobile.open { display: flex; }
+
+    .nav__mobile a {
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--black);
     }
 
     @media (max-width: 768px) {
-      .gallery-page-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      .nav__book-btn { display: none; }
     }
 
-    @media (max-width: 480px) {
-      .gallery-page-grid { grid-template-columns: 1fr; }
+    /* ===================== SECTION LABELS ===================== */
+    .section-label {
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
+      margin-bottom: 0.5rem;
     }
 
-    /* ===================== CTA BANNER ===================== */
-    .cta-banner {
-      text-align: center;
-      padding: 5rem 2rem;
-      background: var(--blush-light);
-    }
-
-    .cta-banner__title {
+    .section-title {
       font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    /* ===================== LOCATION CARDS ===================== */
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .location-card {
+      background: var(--white);
+      padding: 2rem;
+      border: 1px solid rgba(14, 12, 10, 0.06);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .location-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.06);
+    }
+
+    .location-card__name {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .location-card__date {
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blush-muted);
       margin-bottom: 1rem;
     }
 
-    .cta-banner__text {
+    .location-card__desc {
       font-weight: 300;
-      font-size: 1rem;
-      color: rgba(14, 12, 10, 0.7);
-      margin-bottom: 2rem;
+      font-size: 0.85rem;
+      color: rgba(14, 12, 10, 0.6);
+      line-height: 1.7;
     }
 
+    @media (max-width: 768px) {
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== BUTTONS ===================== */
     .btn {
       display: inline-block;
       font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      padding: 0.85rem 2.5rem;
-      transition: all 0.3s;
+      padding: 1rem 3rem;
+      transition: background 0.3s, color 0.3s, transform 0.2s;
     }
 
     .btn--primary {
@@ -330,6 +290,50 @@
     .btn--primary:hover {
       background: var(--blush-muted);
       color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ===================== CTA BANNER ===================== */
+    .cta-banner {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: var(--blush-light);
+    }
+
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner__text {
+      font-weight: 300;
+      color: rgba(14, 12, 10, 0.6);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===================== CUSTOM LOCATION SECTION ===================== */
+    .custom-location {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .custom-location p {
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(14, 12, 10, 0.7);
+      margin-bottom: 1rem;
+    }
+
+    .custom-location .custom-location__pricing {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: rgba(14, 12, 10, 0.5);
     }
 
     /* ===================== FOOTER ===================== */
@@ -414,28 +418,7 @@
       .footer__inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
     }
 
-    /* ===================== UTILITIES ===================== */
-    .text-center { text-align: center; }
-    .mb-3 { margin-bottom: 3rem; }
-
-    .section-label {
-      font-family: var(--font-body);
-      font-weight: 500;
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--blush);
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      color: var(--black);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Scroll reveal */
+    /* ===================== SCROLL REVEAL ===================== */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -474,8 +457,8 @@
         <li><a href="/index.html#about">About</a></li>
         <li><a href="/index.html#services">Services</a></li>
         <li><a href="/index.html#pricing">Pricing</a></li>
-        <li><a href="/gallery.html" class="active">Gallery</a></li>
-        <li><a href="/locations.html">Locations</a></li>
+        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/locations.html" class="active">Locations</a></li>
         <li><a href="/index.html#faq">FAQ</a></li>
         <li><a href="/index.html#booking" class="nav__book-btn">Book Now</a></li>
       </ul>
@@ -503,38 +486,81 @@
   <section class="hero">
     <div class="hero__bg"></div>
     <div class="hero__content">
-      <h1 class="hero__title">Gallery</h1>
+      <h1 class="hero__title">Session Locations</h1>
     </div>
   </section>
 
-  <!-- Gallery Grid -->
+  <!-- Intro -->
   <section class="section">
     <div class="container">
       <div class="text-center mb-3 reveal">
-        <p class="section-label">Our Work</p>
-        <h2 class="section-title">Curated Moments</h2>
+        <p class="section-label">Where We Shoot</p>
+        <h2 class="section-title">Upcoming Locations</h2>
+        <p style="max-width: 640px; margin: 1.5rem auto 0; font-weight: 300; line-height: 1.8; color: rgba(14,12,10,0.7);">We scout the best spots so you don't have to. Here's where we're headed &mdash; and if you have somewhere special in mind, let's talk.</p>
       </div>
-      <div class="gallery-page-grid reveal">
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
-        <div class="gallery-page-grid__item"><span>Photo coming soon</span></div>
+
+      <div class="location-grid reveal">
+        <!-- Location Card 1 — Edit name, date, and description each week -->
+        <div class="location-card">
+          <p class="location-card__name">Johnston Mill Nature Preserve</p>
+          <p class="location-card__date">Week of March 23</p>
+          <p class="location-card__desc">Wildflowers in peak bloom, gorgeous wooded trails</p>
+        </div>
+        <!-- Location Card 2 — Edit name, date, and description each week -->
+        <div class="location-card">
+          <p class="location-card__name">Kellie's Ridge Park, Wendell</p>
+          <p class="location-card__date">Week of March 30</p>
+          <p class="location-card__desc">Open fields and golden hour views</p>
+        </div>
+        <!-- Location Card 3 — Edit or remove as needed -->
+        <div class="location-card">
+          <p class="location-card__name">Custom Location</p>
+          <p class="location-card__date">Ongoing</p>
+          <p class="location-card__desc">Have somewhere special in mind? Let's make it happen</p>
+        </div>
+      </div>
+
+      <div class="location-grid mt-3 reveal">
+        <!-- Additional location cards — add or remove as needed -->
+        <div class="location-card">
+          <p class="location-card__name">Neuse River Greenway Trail</p>
+          <p class="location-card__date">Week of April 6</p>
+          <p class="location-card__desc">Shaded paths along the river, perfect for spring sessions</p>
+        </div>
+        <div class="location-card">
+          <p class="location-card__name">Yates Mill County Park</p>
+          <p class="location-card__date">Week of April 13</p>
+          <p class="location-card__desc">Historic mill, pond reflections, and lush greenery</p>
+        </div>
+        <div class="location-card">
+          <p class="location-card__name">Wendell Falls Community Park</p>
+          <p class="location-card__date">Week of April 20</p>
+          <p class="location-card__desc">Wide open spaces and a community feel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Location CTA -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="text-center mb-3 reveal">
+        <p class="section-label">Your Spot</p>
+        <h2 class="section-title">Want a Custom Location?</h2>
+      </div>
+      <div class="custom-location reveal">
+        <p>Have a spot that's special to you? A park where you got engaged, a trail you walk every morning, or somewhere only locals know? We're happy to make it work.</p>
+        <p>Reach out and we'll discuss options and pricing.</p>
+        <p style="margin-top: 1.5rem;"><a href="mailto:dogwoodphotosnc@gmail.com" style="color: var(--blush-muted); font-weight: 500; font-size: 1rem;">Email us at dogwoodphotosnc@gmail.com</a></p>
+        <p class="custom-location__pricing" style="margin-top: 1.5rem;">Custom locations starting at $75. Always upfront, always fair.</p>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-banner reveal">
-    <h2 class="cta-banner__title">Love what you see?</h2>
-    <p class="cta-banner__text">Book your own mini session and be part of the gallery.</p>
+    <h2 class="cta-banner__title">Ready to book?</h2>
+    <p class="cta-banner__text">Pick a location, pick a time, and let's make some memories.</p>
     <a href="/index.html#booking" class="btn btn--primary">Book Now</a>
   </section>
 
@@ -572,29 +598,33 @@
   </footer>
 
   <script>
-    // Mobile Menu
+    // Scroll shadow on nav
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('nav--scrolled', window.scrollY > 10);
+    });
+
+    // Mobile menu toggle
     document.getElementById('hamburger').addEventListener('click', () => {
-      document.getElementById('hamburger').classList.toggle('open');
       document.getElementById('mobileMenu').classList.toggle('open');
     });
 
-    // Scroll Nav Shadow
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav__mobile a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
     });
 
-    // Scroll Reveal
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
