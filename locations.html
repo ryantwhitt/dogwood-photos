@@ -251,6 +251,17 @@
       margin-bottom: 0.5rem;
     }
 
+    .location-card__name a {
+      color: var(--black);
+      border-bottom: 1px solid var(--blush);
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .location-card__name a:hover {
+      color: var(--blush-muted);
+      border-color: var(--blush-muted);
+    }
+
     .location-card__date {
       font-weight: 500;
       font-size: 0.75rem;
@@ -502,42 +513,25 @@
       <div class="location-grid reveal">
         <!-- Location Card 1 — Edit name, date, and description each week -->
         <div class="location-card">
-          <p class="location-card__name">Johnston Mill Nature Preserve</p>
-          <p class="location-card__date">Week of March 23</p>
-          <p class="location-card__desc">Wildflowers in peak bloom, gorgeous wooded trails</p>
+          <p class="location-card__name"><a href="https://maps.google.com/?q=Wendell+Falls,+Wendell,+NC" target="_blank" rel="noopener">Wendell Falls</a></p>
+          <p class="location-card__date">Weeks of March 17 &amp; March 24</p>
+          <p class="location-card__desc">A beautiful planned community with scenic walking paths, open green spaces, and gorgeous natural light. Perfect for families and couples.</p>
         </div>
         <!-- Location Card 2 — Edit name, date, and description each week -->
         <div class="location-card">
-          <p class="location-card__name">Kellie's Ridge Park, Wendell</p>
-          <p class="location-card__date">Week of March 30</p>
-          <p class="location-card__desc">Open fields and golden hour views</p>
+          <p class="location-card__name"><a href="https://maps.google.com/?q=Oak+View+County+Park,+Garner,+NC" target="_blank" rel="noopener">Oak View County Park</a></p>
+          <p class="location-card__date">Weeks of March 31 &amp; April 7</p>
+          <p class="location-card__desc">A charming historic farm setting with open fields, mature trees, and stunning golden hour light.</p>
         </div>
         <!-- Location Card 3 — Edit or remove as needed -->
         <div class="location-card">
-          <p class="location-card__name">Custom Location</p>
-          <p class="location-card__date">Ongoing</p>
-          <p class="location-card__desc">Have somewhere special in mind? Let's make it happen</p>
+          <p class="location-card__name"><a href="https://maps.google.com/?q=North+Carolina+Museum+of+Art,+Raleigh,+NC" target="_blank" rel="noopener">NC Museum of Art</a></p>
+          <p class="location-card__date">Weeks of April 14 &amp; April 21</p>
+          <p class="location-card__desc">One of Raleigh's most stunning outdoor settings &mdash; sculpture gardens, open lawns, and beautiful walking trails.</p>
         </div>
       </div>
 
-      <div class="location-grid mt-3 reveal">
-        <!-- Additional location cards — add or remove as needed -->
-        <div class="location-card">
-          <p class="location-card__name">Neuse River Greenway Trail</p>
-          <p class="location-card__date">Week of April 6</p>
-          <p class="location-card__desc">Shaded paths along the river, perfect for spring sessions</p>
-        </div>
-        <div class="location-card">
-          <p class="location-card__name">Yates Mill County Park</p>
-          <p class="location-card__date">Week of April 13</p>
-          <p class="location-card__desc">Historic mill, pond reflections, and lush greenery</p>
-        </div>
-        <div class="location-card">
-          <p class="location-card__name">Wendell Falls Community Park</p>
-          <p class="location-card__date">Week of April 20</p>
-          <p class="location-card__desc">Wide open spaces and a community feel</p>
-        </div>
-      </div>
+      <p class="text-center mt-3 reveal" style="font-weight: 300; font-size: 0.8rem; color: rgba(14,12,10,0.45); font-style: italic;">Locations are subject to change based on seasonal conditions. Follow us on Instagram <a href="https://instagram.com/dogwoodphotosnc" target="_blank" rel="noopener" style="color: var(--blush-muted); font-weight: 500;">@dogwoodphotosnc</a> for the latest updates.</p>
     </div>
   </section>
 
