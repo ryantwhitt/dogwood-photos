@@ -440,19 +440,19 @@
     }
 
     @keyframes petalFall {
-      0%   { transform: translateY(-5%) translateX(0px)    rotate(var(--r1)); opacity: var(--petal-opacity); }
-      25%  { transform: translateY(23%) translateX(var(--dx1)) rotate(var(--r2)); }
-      50%  { transform: translateY(50%) translateX(var(--dx2)) rotate(var(--r3)); }
-      75%  { transform: translateY(77%) translateX(var(--dx3)) rotate(var(--r4)); }
-      100% { transform: translateY(105%) translateX(var(--dx4)) rotate(var(--r1)); opacity: 0; }
+      0%   { transform: translateY(0)     translateX(0px)    rotate(var(--r1)); opacity: var(--petal-opacity); }
+      25%  { transform: translateY(25vh)  translateX(var(--dx1)) rotate(var(--r2)); opacity: var(--petal-opacity); }
+      50%  { transform: translateY(50vh)  translateX(var(--dx2)) rotate(var(--r3)); opacity: var(--petal-opacity); }
+      75%  { transform: translateY(75vh)  translateX(var(--dx3)) rotate(var(--r4)); opacity: var(--petal-opacity); }
+      100% { transform: translateY(105vh) translateX(var(--dx4)) rotate(var(--r1)); opacity: 0; }
     }
 
     @keyframes petalSwirl {
-      0%   { transform: translateY(-5%) translateX(0px)     rotate(var(--r1)); opacity: var(--petal-opacity); }
-      25%  { transform: translateY(23%) translateX(calc(var(--dx1) * 1.8)) rotate(var(--r2)); }
-      50%  { transform: translateY(50%) translateX(calc(var(--dx2) * -1.5)) rotate(var(--r3)); }
-      75%  { transform: translateY(77%) translateX(calc(var(--dx3) * 2))  rotate(var(--r4)); }
-      100% { transform: translateY(105%) translateX(calc(var(--dx4) * -1)) rotate(var(--r1)); opacity: 0; }
+      0%   { transform: translateY(0)     translateX(0px)     rotate(var(--r1)); opacity: var(--petal-opacity); }
+      25%  { transform: translateY(25vh)  translateX(calc(var(--dx1) * 2.5)) rotate(var(--r2)); opacity: var(--petal-opacity); }
+      50%  { transform: translateY(50vh)  translateX(calc(var(--dx2) * -2))  rotate(var(--r3)); opacity: var(--petal-opacity); }
+      75%  { transform: translateY(75vh)  translateX(calc(var(--dx3) * 2.5)) rotate(var(--r4)); opacity: var(--petal-opacity); }
+      100% { transform: translateY(105vh) translateX(calc(var(--dx4) * -1.5)) rotate(var(--r1)); opacity: 0; }
     }
 
     @media (max-width: 768px) {
@@ -1643,120 +1643,179 @@
       <!-- Subtle glow -->
       <div class="hero-new__glow"></div>
 
-      <!-- Dogwood tree SVG background -->
-      <svg class="hero-new__tree" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Trunk -->
-        <path d="M400 1000 L400 600" stroke="#E8C7C8" stroke-width="2.8" stroke-linecap="round" opacity="0.12"/>
-        <path d="M400 750 L398 650" stroke="#E8C7C8" stroke-width="2.4" stroke-linecap="round" opacity="0.12"/>
+      <!-- Dogwood tree SVG background — detailed naturalistic silhouette -->
+      <svg class="hero-new__tree" viewBox="0 0 1000 1200" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#E8C7C8" stroke-linecap="round" fill="none">
+          <!-- Trunk — thick, slightly curved, with character -->
+          <path d="M500 1200 C498 1120, 496 1060, 497 1000 C498 940, 502 880, 500 820 C498 760, 496 720, 498 680" stroke-width="5" opacity="0.14"/>
+          <path d="M500 1200 C502 1140, 504 1080, 503 1020 C502 960, 498 900, 500 840" stroke-width="4" opacity="0.10"/>
+          <!-- Trunk bark texture lines -->
+          <path d="M497 1100 C496 1060, 498 1020, 497 980" stroke-width="1" opacity="0.06"/>
+          <path d="M503 1080 C504 1040, 502 1000, 503 960" stroke-width="1" opacity="0.06"/>
 
-        <!-- Main branches from trunk -->
-        <path d="M400 700 Q350 650 280 620" stroke="#E8C7C8" stroke-width="1.8" stroke-linecap="round" opacity="0.12"/>
-        <path d="M400 700 Q450 650 520 620" stroke="#E8C7C8" stroke-width="1.8" stroke-linecap="round" opacity="0.12"/>
-        <path d="M400 650 Q340 600 260 540" stroke="#E8C7C8" stroke-width="1.5" stroke-linecap="round" opacity="0.12"/>
-        <path d="M400 650 Q460 600 540 540" stroke="#E8C7C8" stroke-width="1.5" stroke-linecap="round" opacity="0.12"/>
-        <path d="M400 620 Q370 560 310 480" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M400 620 Q430 560 490 480" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+          <!-- === PRIMARY SCAFFOLD BRANCHES === -->
+          <!-- Left main branch -->
+          <path d="M498 780 C470 740, 420 700, 360 660 C310 630, 260 610, 210 580" stroke-width="3.5" opacity="0.13"/>
+          <!-- Right main branch -->
+          <path d="M502 780 C530 740, 580 700, 640 660 C690 630, 740 610, 790 580" stroke-width="3.5" opacity="0.13"/>
+          <!-- Center-left ascending -->
+          <path d="M498 740 C480 690, 460 630, 440 560 C425 500, 415 440, 400 380" stroke-width="2.8" opacity="0.12"/>
+          <!-- Center-right ascending -->
+          <path d="M502 740 C520 690, 540 630, 560 560 C575 500, 585 440, 600 380" stroke-width="2.8" opacity="0.12"/>
+          <!-- Center vertical leader -->
+          <path d="M500 700 C499 640, 498 580, 497 510 C496 450, 498 380, 500 310 C502 250, 500 200, 498 140" stroke-width="2.2" opacity="0.12"/>
 
-        <!-- Upper branches -->
-        <path d="M400 600 Q380 530 340 440" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M400 600 Q420 530 460 440" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M340 440 Q310 400 270 350" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M460 440 Q490 400 530 350" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+          <!-- === SECONDARY BRANCHES (left side) === -->
+          <path d="M360 660 C330 630, 290 600, 240 570" stroke-width="2" opacity="0.11"/>
+          <path d="M360 660 C340 640, 310 640, 270 650" stroke-width="1.5" opacity="0.11"/>
+          <path d="M310 630 C280 600, 240 570, 190 530" stroke-width="1.8" opacity="0.11"/>
+          <path d="M260 610 C230 580, 190 560, 140 530" stroke-width="1.5" opacity="0.11"/>
+          <path d="M210 580 C180 560, 150 530, 120 490" stroke-width="1.5" opacity="0.11"/>
+          <path d="M440 560 C410 530, 370 500, 320 460" stroke-width="1.8" opacity="0.11"/>
+          <path d="M400 380 C370 350, 330 310, 290 270" stroke-width="1.5" opacity="0.11"/>
+          <path d="M400 380 C380 340, 350 310, 310 300" stroke-width="1.5" opacity="0.11"/>
 
-        <!-- Smaller twigs -->
-        <path d="M280 620 Q260 590 230 570" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M520 620 Q540 590 570 570" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M260 540 Q230 510 190 490" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M540 540 Q570 510 610 490" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M310 480 Q280 450 240 420" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M490 480 Q520 450 560 420" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M270 350 Q250 310 220 270" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M530 350 Q550 310 580 270" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+          <!-- === SECONDARY BRANCHES (right side) === -->
+          <path d="M640 660 C670 630, 710 600, 760 570" stroke-width="2" opacity="0.11"/>
+          <path d="M640 660 C660 640, 690 640, 730 650" stroke-width="1.5" opacity="0.11"/>
+          <path d="M690 630 C720 600, 760 570, 810 530" stroke-width="1.8" opacity="0.11"/>
+          <path d="M740 610 C770 580, 810 560, 860 530" stroke-width="1.5" opacity="0.11"/>
+          <path d="M790 580 C820 560, 850 530, 880 490" stroke-width="1.5" opacity="0.11"/>
+          <path d="M560 560 C590 530, 630 500, 680 460" stroke-width="1.8" opacity="0.11"/>
+          <path d="M600 380 C630 350, 670 310, 710 270" stroke-width="1.5" opacity="0.11"/>
+          <path d="M600 380 C620 340, 650 310, 690 300" stroke-width="1.5" opacity="0.11"/>
 
-        <!-- Top branches -->
-        <path d="M400 580 Q395 500 390 380" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M390 380 Q380 330 360 280" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M390 380 Q400 330 420 280" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M360 280 Q340 240 320 200" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
-        <path d="M420 280 Q440 240 460 200" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+          <!-- === TERTIARY BRANCHES & TWIGS (left) === -->
+          <path d="M240 570 C220 550, 200 520, 170 500" stroke-width="1.2" opacity="0.10"/>
+          <path d="M240 570 C210 560, 180 570, 150 580" stroke-width="1" opacity="0.10"/>
+          <path d="M190 530 C160 510, 130 480, 100 450" stroke-width="1.2" opacity="0.10"/>
+          <path d="M190 530 C170 520, 140 530, 110 550" stroke-width="1" opacity="0.09"/>
+          <path d="M140 530 C120 510, 90 490, 60 460" stroke-width="1" opacity="0.09"/>
+          <path d="M120 490 C100 470, 70 450, 50 420" stroke-width="1" opacity="0.09"/>
+          <path d="M120 490 C100 480, 80 500, 60 520" stroke-width="0.8" opacity="0.08"/>
+          <path d="M320 460 C290 430, 260 400, 230 370" stroke-width="1.2" opacity="0.10"/>
+          <path d="M320 460 C300 440, 280 450, 250 470" stroke-width="1" opacity="0.09"/>
+          <path d="M290 270 C260 240, 230 210, 200 180" stroke-width="1.2" opacity="0.10"/>
+          <path d="M290 270 C270 250, 240 260, 220 280" stroke-width="1" opacity="0.09"/>
+          <path d="M310 300 C280 280, 250 270, 220 240" stroke-width="1" opacity="0.09"/>
 
-        <!-- Flowers at branch tips — four-petal dogwood flowers -->
-        <!-- Flower 1 at (230, 570) -->
-        <g transform="translate(230,570)" opacity="0.09">
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
+          <!-- === TERTIARY BRANCHES & TWIGS (right) === -->
+          <path d="M760 570 C780 550, 800 520, 830 500" stroke-width="1.2" opacity="0.10"/>
+          <path d="M760 570 C790 560, 820 570, 850 580" stroke-width="1" opacity="0.10"/>
+          <path d="M810 530 C840 510, 870 480, 900 450" stroke-width="1.2" opacity="0.10"/>
+          <path d="M810 530 C830 520, 860 530, 890 550" stroke-width="1" opacity="0.09"/>
+          <path d="M860 530 C880 510, 910 490, 940 460" stroke-width="1" opacity="0.09"/>
+          <path d="M880 490 C900 470, 930 450, 950 420" stroke-width="1" opacity="0.09"/>
+          <path d="M880 490 C900 480, 920 500, 940 520" stroke-width="0.8" opacity="0.08"/>
+          <path d="M680 460 C710 430, 740 400, 770 370" stroke-width="1.2" opacity="0.10"/>
+          <path d="M680 460 C700 440, 720 450, 750 470" stroke-width="1" opacity="0.09"/>
+          <path d="M710 270 C740 240, 770 210, 800 180" stroke-width="1.2" opacity="0.10"/>
+          <path d="M710 270 C730 250, 760 260, 780 280" stroke-width="1" opacity="0.09"/>
+          <path d="M690 300 C720 280, 750 270, 780 240" stroke-width="1" opacity="0.09"/>
+
+          <!-- === TOP CROWN BRANCHES === -->
+          <path d="M498 310 C480 270, 450 230, 420 190" stroke-width="1.5" opacity="0.10"/>
+          <path d="M502 310 C520 270, 550 230, 580 190" stroke-width="1.5" opacity="0.10"/>
+          <path d="M498 250 C475 210, 450 170, 430 130" stroke-width="1.2" opacity="0.10"/>
+          <path d="M502 250 C525 210, 550 170, 570 130" stroke-width="1.2" opacity="0.10"/>
+          <path d="M498 200 C490 170, 480 140, 460 110" stroke-width="1" opacity="0.09"/>
+          <path d="M502 200 C510 170, 520 140, 540 110" stroke-width="1" opacity="0.09"/>
+          <path d="M498 140 C490 110, 475 80, 455 55" stroke-width="1" opacity="0.09"/>
+          <path d="M498 140 C510 110, 525 80, 545 55" stroke-width="1" opacity="0.09"/>
+          <path d="M498 140 C497 110, 496 80, 500 50" stroke-width="1" opacity="0.09"/>
+
+          <!-- === FINE TWIGS (outermost, very thin) — left === -->
+          <path d="M170 500 C150 480, 130 470, 105 455" stroke-width="0.7" opacity="0.08"/>
+          <path d="M170 500 C155 490, 140 505, 125 520" stroke-width="0.7" opacity="0.07"/>
+          <path d="M100 450 C80 435, 55 425, 35 410" stroke-width="0.7" opacity="0.07"/>
+          <path d="M60 460 C45 450, 25 445, 10 435" stroke-width="0.7" opacity="0.07"/>
+          <path d="M50 420 C35 405, 20 395, 10 380" stroke-width="0.7" opacity="0.07"/>
+          <path d="M230 370 C210 350, 185 335, 160 315" stroke-width="0.8" opacity="0.08"/>
+          <path d="M230 370 C215 360, 200 375, 185 390" stroke-width="0.7" opacity="0.07"/>
+          <path d="M200 180 C180 160, 155 140, 135 120" stroke-width="0.8" opacity="0.08"/>
+          <path d="M200 180 C185 170, 175 185, 160 200" stroke-width="0.7" opacity="0.07"/>
+          <path d="M220 240 C200 220, 180 205, 155 190" stroke-width="0.7" opacity="0.08"/>
+          <path d="M150 580 C130 590, 110 605, 90 615" stroke-width="0.7" opacity="0.07"/>
+          <path d="M270 650 C250 660, 230 675, 210 690" stroke-width="0.7" opacity="0.07"/>
+          <path d="M250 470 C230 480, 215 500, 195 510" stroke-width="0.7" opacity="0.07"/>
+
+          <!-- === FINE TWIGS (outermost, very thin) — right === -->
+          <path d="M830 500 C850 480, 870 470, 895 455" stroke-width="0.7" opacity="0.08"/>
+          <path d="M830 500 C845 490, 860 505, 875 520" stroke-width="0.7" opacity="0.07"/>
+          <path d="M900 450 C920 435, 945 425, 965 410" stroke-width="0.7" opacity="0.07"/>
+          <path d="M940 460 C955 450, 975 445, 990 435" stroke-width="0.7" opacity="0.07"/>
+          <path d="M950 420 C965 405, 980 395, 990 380" stroke-width="0.7" opacity="0.07"/>
+          <path d="M770 370 C790 350, 815 335, 840 315" stroke-width="0.8" opacity="0.08"/>
+          <path d="M770 370 C785 360, 800 375, 815 390" stroke-width="0.7" opacity="0.07"/>
+          <path d="M800 180 C820 160, 845 140, 865 120" stroke-width="0.8" opacity="0.08"/>
+          <path d="M800 180 C815 170, 825 185, 840 200" stroke-width="0.7" opacity="0.07"/>
+          <path d="M780 240 C800 220, 820 205, 845 190" stroke-width="0.7" opacity="0.08"/>
+          <path d="M850 580 C870 590, 890 605, 910 615" stroke-width="0.7" opacity="0.07"/>
+          <path d="M730 650 C750 660, 770 675, 790 690" stroke-width="0.7" opacity="0.07"/>
+          <path d="M750 470 C770 480, 785 500, 805 510" stroke-width="0.7" opacity="0.07"/>
+
+          <!-- === FINE TWIGS — top crown === -->
+          <path d="M420 190 C400 170, 380 150, 360 135" stroke-width="0.8" opacity="0.08"/>
+          <path d="M420 190 C410 175, 395 180, 380 195" stroke-width="0.7" opacity="0.07"/>
+          <path d="M580 190 C600 170, 620 150, 640 135" stroke-width="0.8" opacity="0.08"/>
+          <path d="M580 190 C590 175, 605 180, 620 195" stroke-width="0.7" opacity="0.07"/>
+          <path d="M430 130 C415 110, 395 95, 375 80" stroke-width="0.7" opacity="0.08"/>
+          <path d="M570 130 C585 110, 605 95, 625 80" stroke-width="0.7" opacity="0.08"/>
+          <path d="M460 110 C445 90, 430 75, 415 55" stroke-width="0.7" opacity="0.07"/>
+          <path d="M540 110 C555 90, 570 75, 585 55" stroke-width="0.7" opacity="0.07"/>
+          <path d="M455 55 C440 40, 425 25, 415 10" stroke-width="0.6" opacity="0.06"/>
+          <path d="M545 55 C560 40, 575 25, 585 10" stroke-width="0.6" opacity="0.06"/>
+          <path d="M500 50 C498 30, 500 15, 502 5" stroke-width="0.7" opacity="0.07"/>
+
+          <!-- === EXTRA DETAIL: mid-level crossing twigs for density === -->
+          <path d="M350 550 C320 520, 290 490, 260 455" stroke-width="1" opacity="0.09"/>
+          <path d="M650 550 C680 520, 710 490, 740 455" stroke-width="1" opacity="0.09"/>
+          <path d="M380 470 C355 440, 330 415, 300 390" stroke-width="0.9" opacity="0.09"/>
+          <path d="M620 470 C645 440, 670 415, 700 390" stroke-width="0.9" opacity="0.09"/>
+          <path d="M300 390 C275 370, 250 350, 230 325" stroke-width="0.8" opacity="0.08"/>
+          <path d="M700 390 C725 370, 750 350, 770 325" stroke-width="0.8" opacity="0.08"/>
+          <path d="M260 455 C240 440, 220 420, 195 400" stroke-width="0.8" opacity="0.08"/>
+          <path d="M740 455 C760 440, 780 420, 805 400" stroke-width="0.8" opacity="0.08"/>
+          <path d="M195 400 C175 385, 155 370, 140 350" stroke-width="0.7" opacity="0.07"/>
+          <path d="M805 400 C825 385, 845 370, 860 350" stroke-width="0.7" opacity="0.07"/>
         </g>
-        <!-- Flower 2 at (570, 570) -->
-        <g transform="translate(570,570)" opacity="0.08">
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 3 at (190, 490) -->
-        <g transform="translate(190,490)" opacity="0.09">
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 4 at (610, 490) -->
-        <g transform="translate(610,490)" opacity="0.08">
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 5 at (240, 420) -->
-        <g transform="translate(240,420)" opacity="0.09">
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8"/>
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 6 at (560, 420) -->
-        <g transform="translate(560,420)" opacity="0.08">
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8"/>
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 7 at (220, 270) -->
-        <g transform="translate(220,270)" opacity="0.09">
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 8 at (580, 270) -->
-        <g transform="translate(580,270)" opacity="0.08">
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 9 at (320, 200) -->
-        <g transform="translate(320,200)" opacity="0.09">
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 10 at (460, 200) -->
-        <g transform="translate(460,200)" opacity="0.08">
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
-        </g>
-        <!-- Flower 11 at (400, 600) - near trunk split -->
-        <g transform="translate(400,590)" opacity="0.09">
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
-          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
+
+        <!-- Dogwood flowers at branch tips -->
+        <g fill="#E8C7C8">
+          <!-- Flowers scattered at many branch endpoints -->
+          <g transform="translate(105,455) scale(1.1)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(35,410) scale(0.9)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(10,380) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(160,315) scale(1)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(135,120) scale(0.9)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(155,190) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(90,615) scale(1)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(210,690) scale(0.9)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(195,510) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(60,520) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(140,350) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(230,325) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <!-- Right side flowers -->
+          <g transform="translate(895,455) scale(1.1)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(965,410) scale(0.9)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(990,380) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(840,315) scale(1)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(865,120) scale(0.9)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(845,190) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(910,615) scale(1)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(790,690) scale(0.9)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(805,510) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(940,520) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(860,350) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(770,325) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <!-- Top crown flowers -->
+          <g transform="translate(360,135) scale(1)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(640,135) scale(1)" opacity="0.08"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(375,80) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(625,80) scale(0.85)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(415,55) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(585,55) scale(0.8)" opacity="0.07"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
+          <g transform="translate(500,10) scale(0.7)" opacity="0.06"><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(90)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(180)"/><path d="M0 -10 C4 -5,4 0,0 3 C-4 0,-4 -5,0 -10Z" transform="rotate(270)"/></g>
         </g>
       </svg>
 
@@ -2494,10 +2553,10 @@
         var rot2 = randInt(-120, 120);
         var rot3 = randInt(-180, 180);
         var rot4 = randInt(-60, 60);
-        var dx1 = randInt(-30, 30);
-        var dx2 = randInt(-40, 40);
-        var dx3 = randInt(-30, 30);
-        var dx4 = randInt(-20, 20);
+        var dx1 = randInt(-60, 60);
+        var dx2 = randInt(-80, 80);
+        var dx3 = randInt(-60, 60);
+        var dx4 = randInt(-40, 40);
 
         var el = document.createElement('div');
         el.className = 'hero-new__petal';
