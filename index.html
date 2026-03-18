@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <style>
     /* ===================== RESET & BASE ===================== */
@@ -87,8 +87,23 @@
       background: rgba(250, 248, 245, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(14, 12, 10, 0.06);
-      transition: box-shadow 0.3s;
+      transition: background 0.4s, box-shadow 0.3s, border-color 0.4s;
     }
+
+    .nav--transparent {
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom-color: transparent;
+    }
+
+    .nav--transparent .nav__links a { color: var(--white); }
+    .nav--transparent .nav__links a:hover { color: var(--blush); }
+    .nav--transparent .nav__logo-text .dogwood { color: var(--white); }
+    .nav--transparent .nav__logo-text .photos { color: var(--blush); }
+    .nav--transparent .nav__hamburger span { background: var(--white); }
+    .nav--transparent .nav__logo svg rect,
+    .nav--transparent .nav__logo svg path,
+    .nav--transparent .nav__logo svg circle:last-of-type { stroke: var(--white); }
 
     .nav.scrolled {
       box-shadow: 0 2px 20px rgba(14, 12, 10, 0.08);
@@ -124,6 +139,7 @@
       font-weight: 700;
       color: var(--black);
       margin-left: -9px;
+      transition: color 0.4s;
     }
 
     .nav__logo-text .photos {
@@ -134,6 +150,7 @@
       text-transform: uppercase;
       color: var(--blush-muted);
       margin-top: 2px;
+      transition: color 0.4s;
     }
 
     .nav__links {
@@ -202,7 +219,7 @@
       width: 24px;
       height: 1.5px;
       background: var(--black);
-      transition: transform 0.3s, opacity 0.3s;
+      transition: transform 0.3s, opacity 0.3s, background 0.4s;
     }
 
     .nav__hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 5px); }
@@ -256,7 +273,195 @@
       opacity: 1;
     }
 
-    /* ===================== HERO ===================== */
+    /* Home page has no top padding — hero is full viewport with transparent nav */
+    #page-home { padding-top: 0; }
+
+    /* ===================== NEW HERO ===================== */
+    .hero-new {
+      min-height: 100vh;
+      background: var(--black);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-new__glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(232,199,200,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-new__tree {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-new__petals {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+      overflow: hidden;
+    }
+
+    .hero-new__petal {
+      position: absolute;
+      will-change: transform, opacity;
+    }
+
+    .hero-new__content {
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-new__title {
+      font-family: var(--font-display);
+      font-size: 78px;
+      color: #faf8f5;
+      letter-spacing: 2px;
+      line-height: 1;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroFadeUp 1.4s ease-out 0.4s forwards;
+    }
+
+    .hero-new__location {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 13px;
+      color: #E8C7C8;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      margin-top: 18px;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroFadeUp 1.2s ease-out 1s forwards;
+    }
+
+    .hero-new__sessions {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 15px;
+      color: rgba(250,248,245,0.7);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroFadeUp 1.2s ease-out 1.3s forwards;
+    }
+
+    .hero-new__divider {
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #E8C7C8, transparent);
+      margin: 26px auto;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroFadeUp 1.2s ease-out 1.5s forwards;
+    }
+
+    .hero-new__tagline {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 12px;
+      color: rgba(250,248,245,0.45);
+      letter-spacing: 1.5px;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroFadeUp 1.2s ease-out 1.7s forwards;
+    }
+
+    .hero-new__cta {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #0e0c0a;
+      background: #E8C7C8;
+      padding: 15px 42px;
+      margin-top: 38px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, letter-spacing 0.3s;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroFadeUp 1.2s ease-out 1.9s forwards;
+    }
+
+    .hero-new__cta:hover {
+      background: #faf8f5;
+      transform: translateY(-2px);
+      letter-spacing: 3px;
+    }
+
+    .hero-new__scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 26px;
+      background: linear-gradient(to bottom, rgba(232,199,200,0.35), transparent);
+      z-index: 4;
+      opacity: 0;
+      animation: heroFadeUp 1s ease-out 2.4s forwards, scrollPulse 2.5s ease-in-out 3.4s infinite;
+    }
+
+    @keyframes heroFadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.6; }
+    }
+
+    @keyframes petalFall {
+      0%   { transform: translateY(-5%) translateX(0px)    rotate(var(--r1)); opacity: var(--petal-opacity); }
+      25%  { transform: translateY(23%) translateX(var(--dx1)) rotate(var(--r2)); }
+      50%  { transform: translateY(50%) translateX(var(--dx2)) rotate(var(--r3)); }
+      75%  { transform: translateY(77%) translateX(var(--dx3)) rotate(var(--r4)); }
+      100% { transform: translateY(105%) translateX(var(--dx4)) rotate(var(--r1)); opacity: 0; }
+    }
+
+    @keyframes petalSwirl {
+      0%   { transform: translateY(-5%) translateX(0px)     rotate(var(--r1)); opacity: var(--petal-opacity); }
+      25%  { transform: translateY(23%) translateX(calc(var(--dx1) * 1.8)) rotate(var(--r2)); }
+      50%  { transform: translateY(50%) translateX(calc(var(--dx2) * -1.5)) rotate(var(--r3)); }
+      75%  { transform: translateY(77%) translateX(calc(var(--dx3) * 2))  rotate(var(--r4)); }
+      100% { transform: translateY(105%) translateX(calc(var(--dx4) * -1)) rotate(var(--r1)); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-new__title { font-size: 52px; }
+      .hero-new__location { font-size: 11px; letter-spacing: 2.5px; }
+      .hero-new__sessions { font-size: 12px; letter-spacing: 2px; }
+    }
+
+    /* ===================== MINI HERO (inner pages) ===================== */
     .hero {
       min-height: 90vh;
       display: flex;
@@ -400,7 +605,220 @@
       .gallery-grid { grid-template-columns: 1fr; }
     }
 
-    /* ===================== PRICING CARDS ===================== */
+    /* ===================== NEW PRICING SECTION ===================== */
+    .pricing-section-new {
+      background: var(--black);
+      padding: 6rem 0;
+    }
+
+    .pricing-section-new .section-label {
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: #E8C7C8;
+    }
+
+    .pricing-section-new .section-title {
+      font-size: 38px;
+      color: #faf8f5;
+    }
+
+    .pricing-cards-new {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Primary card (pink) */
+    .pricing-card-new--primary {
+      background: #E8C7C8;
+      border-radius: 12px;
+      padding: 38px 40px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .pricing-card-new__price-block {
+      flex-shrink: 0;
+      text-align: center;
+      min-width: 90px;
+    }
+
+    .pricing-card-new--primary .pricing-card-new__price {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 64px;
+      color: #0e0c0a;
+      line-height: 1;
+    }
+
+    .pricing-card-new--primary .pricing-card-new__dollar {
+      font-size: 26px;
+      font-weight: 400;
+      color: rgba(14,12,10,0.5);
+      vertical-align: super;
+      line-height: 1;
+    }
+
+    .pricing-card-new--primary .pricing-card-new__label {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(14,12,10,0.7);
+      margin-top: 6px;
+    }
+
+    .pricing-card-new__info {
+      flex: 1;
+    }
+
+    .pricing-card-new--primary .pricing-card-new__title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      color: #0e0c0a;
+      margin-bottom: 6px;
+    }
+
+    .pricing-card-new--primary .pricing-card-new__desc {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 13px;
+      color: rgba(14,12,10,0.65);
+      line-height: 1.7;
+    }
+
+    .pricing-card-new__action {
+      flex-shrink: 0;
+    }
+
+    .pricing-card-new--primary .pricing-card-new__btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #E8C7C8;
+      background: #0e0c0a;
+      padding: 14px 30px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .pricing-card-new--primary .pricing-card-new__btn:hover {
+      background: #1a1816;
+      transform: translateY(-1px);
+    }
+
+    /* Dark cards */
+    .pricing-card-new--dark {
+      background: rgba(250,248,245,0.03);
+      border: 1px solid rgba(232,199,200,0.1);
+      border-radius: 10px;
+      padding: 32px 36px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .pricing-card-new--dark .pricing-card-new__price {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 48px;
+      color: #faf8f5;
+      line-height: 1;
+    }
+
+    .pricing-card-new--dark .pricing-card-new__dollar {
+      font-size: 22px;
+      color: #E8C7C8;
+      vertical-align: super;
+      line-height: 1;
+    }
+
+    .pricing-card-new--dark .pricing-card-new__label {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(232,199,200,0.6);
+      margin-top: 6px;
+    }
+
+    .pricing-card-new--dark .pricing-card-new__title {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      color: rgba(250,248,245,0.8);
+      margin-bottom: 6px;
+    }
+
+    .pricing-card-new--dark .pricing-card-new__desc {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 13px;
+      color: rgba(250,248,245,0.42);
+      line-height: 1.7;
+    }
+
+    .pricing-card-new--dark .pricing-card-new__btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #E8C7C8;
+      background: transparent;
+      border: 1px solid rgba(232,199,200,0.25);
+      padding: 14px 30px;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s, transform 0.2s;
+    }
+
+    .pricing-card-new--dark .pricing-card-new__btn:hover {
+      border-color: rgba(232,199,200,0.5);
+      background: rgba(232,199,200,0.06);
+      transform: translateY(-1px);
+    }
+
+    .pricing-custom-note {
+      text-align: center;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 12px;
+      color: rgba(250,248,245,0.35);
+      margin-top: 28px;
+    }
+
+    .pricing-custom-note a {
+      color: #E8C7C8;
+      transition: color 0.3s;
+    }
+
+    .pricing-custom-note a:hover { color: #faf8f5; }
+
+    @media (max-width: 600px) {
+      .pricing-card-new--primary,
+      .pricing-card-new--dark {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 30px 24px;
+      }
+      .pricing-card-new--primary .pricing-card-new__price { font-size: 52px; }
+      .pricing-card-new--dark .pricing-card-new__price { font-size: 40px; }
+    }
+
+    /* ===================== OLD PRICING (kept for pricing page FAQ structure) ===================== */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -486,6 +904,19 @@
     }
 
     /* ===================== LOCATION CARDS ===================== */
+    .locations-section-dark {
+      background: var(--black);
+      padding: 6rem 0;
+    }
+
+    .locations-section-dark .section-label {
+      color: #E8C7C8;
+    }
+
+    .locations-section-dark .section-title {
+      color: #faf8f5;
+    }
+
     .location-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -493,33 +924,35 @@
     }
 
     .location-card {
-      background: var(--white);
+      background: rgba(250,248,245,0.03);
+      border: 1px solid rgba(232,199,200,0.1);
+      border-radius: 10px;
       padding: 2rem;
-      border: 1px solid rgba(14, 12, 10, 0.06);
       text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, border-color 0.3s;
     }
 
     .location-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(14, 12, 10, 0.06);
+      border-color: rgba(232,199,200,0.25);
     }
 
     .location-card__name {
       font-weight: 600;
       font-size: 1rem;
       margin-bottom: 0.5rem;
+      color: #faf8f5;
     }
 
     .location-card__name a {
-      color: var(--black);
+      color: #faf8f5;
       border-bottom: 1px solid var(--blush);
       transition: color 0.3s, border-color 0.3s;
     }
 
     .location-card__name a:hover {
-      color: var(--blush-muted);
-      border-color: var(--blush-muted);
+      color: var(--blush);
+      border-color: var(--blush);
     }
 
     .location-card__date {
@@ -527,14 +960,14 @@
       font-size: 0.75rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--blush-muted);
+      color: var(--blush);
       margin-bottom: 1rem;
     }
 
     .location-card__desc {
       font-weight: 300;
       font-size: 0.85rem;
-      color: rgba(14, 12, 10, 0.6);
+      color: rgba(250,248,245,0.45);
       line-height: 1.7;
     }
 
@@ -571,6 +1004,16 @@
     .btn--outline:hover {
       background: var(--black);
       color: var(--white);
+    }
+
+    .btn--outline-light {
+      border: 1px solid rgba(232,199,200,0.3);
+      color: #E8C7C8;
+    }
+
+    .btn--outline-light:hover {
+      background: rgba(232,199,200,0.1);
+      border-color: rgba(232,199,200,0.5);
     }
 
     /* ===================== QUOTE BLOCK ===================== */
@@ -998,57 +1441,6 @@
       transform: translateY(0);
     }
 
-    /* ===================== HERO DOGWOOD FLOWERS ===================== */
-    .hero__title-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .hero__title-wrapper .dogwood-flower {
-      position: absolute;
-      opacity: 0.35;
-    }
-
-    .hero__title-wrapper .dogwood-flower--tl {
-      top: -30px;
-      left: -60px;
-      transform: rotate(-25deg);
-    }
-
-    .hero__title-wrapper .dogwood-flower--tr {
-      top: -20px;
-      right: -55px;
-      transform: rotate(20deg);
-    }
-
-    .hero__title-wrapper .dogwood-flower--bl {
-      bottom: -15px;
-      left: -40px;
-      transform: rotate(-50deg) scale(0.8);
-    }
-
-    .hero__title-wrapper .dogwood-flower--br {
-      bottom: -20px;
-      right: -45px;
-      transform: rotate(40deg) scale(0.85);
-    }
-
-    .hero__title-wrapper .dogwood-flower--ml {
-      top: 50%;
-      left: -75px;
-      transform: translateY(-50%) rotate(-10deg) scale(0.7);
-    }
-
-    .hero__title-wrapper .dogwood-flower--mr {
-      top: 50%;
-      right: -70px;
-      transform: translateY(-50%) rotate(15deg) scale(0.75);
-    }
-
-    @media (max-width: 768px) {
-      .hero__title-wrapper .dogwood-flower { display: none; }
-    }
-
     /* ===================== CAROUSEL ===================== */
     .carousel {
       position: relative;
@@ -1189,7 +1581,7 @@
 <body>
 
   <!-- ===================== NAVIGATION ===================== -->
-  <nav class="nav" id="nav">
+  <nav class="nav nav--transparent" id="nav">
     <div class="nav__inner">
       <div class="nav__logo" onclick="navigateTo('home')">
         <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1246,69 +1638,213 @@
   <!-- ===================== HOME PAGE ===================== -->
   <div class="page active" id="page-home">
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero__bg"></div>
-      <div class="hero__content">
-        <div class="hero__title-wrapper">
-          <!-- Dogwood flower outlines -->
-          <svg class="dogwood-flower dogwood-flower--tl" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
-          </svg>
-          <svg class="dogwood-flower dogwood-flower--tr" width="50" height="50" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
-          </svg>
-          <svg class="dogwood-flower dogwood-flower--bl" width="45" height="45" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
-          </svg>
-          <svg class="dogwood-flower dogwood-flower--br" width="48" height="48" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
-          </svg>
-          <svg class="dogwood-flower dogwood-flower--ml" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
-          </svg>
-          <svg class="dogwood-flower dogwood-flower--mr" width="42" height="42" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="30" cy="12" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="48" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="30" cy="48" rx="8" ry="12" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <ellipse cx="12" cy="30" rx="12" ry="8" stroke="#E8C7C8" stroke-width="1.2" fill="none"/>
-            <circle cx="30" cy="30" r="3" stroke="#E8C7C8" stroke-width="1" fill="none"/>
-          </svg>
-          <h1 class="hero__title">Dogwood Photos</h1>
+    <!-- New Hero -->
+    <section class="hero-new">
+      <!-- Subtle glow -->
+      <div class="hero-new__glow"></div>
+
+      <!-- Dogwood tree SVG background -->
+      <svg class="hero-new__tree" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Trunk -->
+        <path d="M400 1000 L400 600" stroke="#E8C7C8" stroke-width="2.8" stroke-linecap="round" opacity="0.12"/>
+        <path d="M400 750 L398 650" stroke="#E8C7C8" stroke-width="2.4" stroke-linecap="round" opacity="0.12"/>
+
+        <!-- Main branches from trunk -->
+        <path d="M400 700 Q350 650 280 620" stroke="#E8C7C8" stroke-width="1.8" stroke-linecap="round" opacity="0.12"/>
+        <path d="M400 700 Q450 650 520 620" stroke="#E8C7C8" stroke-width="1.8" stroke-linecap="round" opacity="0.12"/>
+        <path d="M400 650 Q340 600 260 540" stroke="#E8C7C8" stroke-width="1.5" stroke-linecap="round" opacity="0.12"/>
+        <path d="M400 650 Q460 600 540 540" stroke="#E8C7C8" stroke-width="1.5" stroke-linecap="round" opacity="0.12"/>
+        <path d="M400 620 Q370 560 310 480" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M400 620 Q430 560 490 480" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+
+        <!-- Upper branches -->
+        <path d="M400 600 Q380 530 340 440" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M400 600 Q420 530 460 440" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M340 440 Q310 400 270 350" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M460 440 Q490 400 530 350" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+
+        <!-- Smaller twigs -->
+        <path d="M280 620 Q260 590 230 570" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M520 620 Q540 590 570 570" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M260 540 Q230 510 190 490" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M540 540 Q570 510 610 490" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M310 480 Q280 450 240 420" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M490 480 Q520 450 560 420" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M270 350 Q250 310 220 270" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M530 350 Q550 310 580 270" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+
+        <!-- Top branches -->
+        <path d="M400 580 Q395 500 390 380" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M390 380 Q380 330 360 280" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M390 380 Q400 330 420 280" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M360 280 Q340 240 320 200" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+        <path d="M420 280 Q440 240 460 200" stroke="#E8C7C8" stroke-width="1.2" stroke-linecap="round" opacity="0.12"/>
+
+        <!-- Flowers at branch tips — four-petal dogwood flowers -->
+        <!-- Flower 1 at (230, 570) -->
+        <g transform="translate(230,570)" opacity="0.09">
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 2 at (570, 570) -->
+        <g transform="translate(570,570)" opacity="0.08">
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 3 at (190, 490) -->
+        <g transform="translate(190,490)" opacity="0.09">
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 4 at (610, 490) -->
+        <g transform="translate(610,490)" opacity="0.08">
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 5 at (240, 420) -->
+        <g transform="translate(240,420)" opacity="0.09">
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8"/>
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 6 at (560, 420) -->
+        <g transform="translate(560,420)" opacity="0.08">
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8"/>
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -11 C5 -5, 5 0, 0 4 C-5 0, -5 -5, 0 -11Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 7 at (220, 270) -->
+        <g transform="translate(220,270)" opacity="0.09">
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 8 at (580, 270) -->
+        <g transform="translate(580,270)" opacity="0.08">
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 9 at (320, 200) -->
+        <g transform="translate(320,200)" opacity="0.09">
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 10 at (460, 200) -->
+        <g transform="translate(460,200)" opacity="0.08">
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -10 C4 -5, 4 0, 0 3 C-4 0, -4 -5, 0 -10Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+        <!-- Flower 11 at (400, 600) - near trunk split -->
+        <g transform="translate(400,590)" opacity="0.09">
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(90)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(180)"/>
+          <path d="M0 -12 C5 -6, 5 0, 0 4 C-5 0, -5 -6, 0 -12Z" fill="#E8C7C8" transform="rotate(270)"/>
+        </g>
+      </svg>
+
+      <!-- Falling petals container -->
+      <div class="hero-new__petals" id="petalContainer"></div>
+
+      <!-- Text content -->
+      <div class="hero-new__content">
+        <h1 class="hero-new__title">Dogwood Photos</h1>
+        <p class="hero-new__location">Based in Wendell &middot; Serving the Triangle</p>
+        <p class="hero-new__sessions">Outdoor Portrait Mini Sessions</p>
+        <div class="hero-new__divider"></div>
+        <p class="hero-new__tagline">A neighbor with a camera and a passion for people</p>
+        <a href="#" class="hero-new__cta" data-page="booking">Book Your Session</a>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="hero-new__scroll-hint"></div>
+    </section>
+
+    <!-- Pricing (moved up) -->
+    <section class="pricing-section-new">
+      <div class="container">
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Pricing</p>
+          <h2 class="section-title">Simple, Honest Pricing</h2>
         </div>
-        <p class="hero__subtitle">Wendell, NC &bull; Outdoor Portrait Mini Sessions</p>
-        <p class="hero__tagline">&ldquo;A neighbor with a camera and a passion for people&rdquo;</p>
-        <a href="#" class="hero__cta" data-page="booking">Book Your Session</a>
+        <div class="pricing-cards-new reveal">
+          <!-- Card 1: Base Session (Pink) -->
+          <div class="pricing-card-new--primary">
+            <div class="pricing-card-new__price-block">
+              <p class="pricing-card-new__price"><span class="pricing-card-new__dollar">$</span>40</p>
+              <p class="pricing-card-new__label">Base Session</p>
+            </div>
+            <div class="pricing-card-new__info">
+              <p class="pricing-card-new__title">Your session, your favorites.</p>
+              <p class="pricing-card-new__desc">15-minute outdoor session. All photos delivered in a watermarked gallery. Pick your 2 favorites &mdash; we'll edit and deliver them clean within 7 days.</p>
+            </div>
+            <div class="pricing-card-new__action">
+              <a href="#" class="pricing-card-new__btn" data-page="booking">Book Now</a>
+            </div>
+          </div>
+          <!-- Card 2: Full Gallery (Dark) -->
+          <div class="pricing-card-new--dark">
+            <div class="pricing-card-new__price-block">
+              <p class="pricing-card-new__price"><span class="pricing-card-new__dollar">$</span>60</p>
+              <p class="pricing-card-new__label">Full Gallery</p>
+            </div>
+            <div class="pricing-card-new__info">
+              <p class="pricing-card-new__title">Every moment, fully edited.</p>
+              <p class="pricing-card-new__desc">Every photo professionally edited, watermark-free, and delivered to your online gallery within 10 days. No choosing, no decisions.</p>
+            </div>
+            <div class="pricing-card-new__action">
+              <a href="#" class="pricing-card-new__btn" data-page="booking">Book Full</a>
+            </div>
+          </div>
+          <!-- Card 3: Rush (Dark) -->
+          <div class="pricing-card-new--dark">
+            <div class="pricing-card-new__price-block">
+              <p class="pricing-card-new__price"><span class="pricing-card-new__dollar">+</span>$20</p>
+              <p class="pricing-card-new__label">Rush</p>
+            </div>
+            <div class="pricing-card-new__info">
+              <p class="pricing-card-new__title">Can't wait? We get it.</p>
+              <p class="pricing-card-new__desc">Add to Base Session. Get your 2 edited photos in 48 hours instead of 7 days. Perfect for gifts, announcements, or when you just can't wait.</p>
+            </div>
+            <div class="pricing-card-new__action">
+              <a href="#" class="pricing-card-new__btn" data-page="booking">Add Rush</a>
+            </div>
+          </div>
+        </div>
+        <p class="pricing-custom-note reveal">Something different in mind? <a href="mailto:dogwoodphotosnc@gmail.com">Reach out</a> &mdash; custom sessions start at $75.</p>
       </div>
     </section>
 
-    <!-- Intro -->
-    <section class="section">
+    <!-- Where We'll Be (dark theme) -->
+    <section class="locations-section-dark">
       <div class="container">
-        <div class="intro reveal">
-          <p class="section-label">Welcome</p>
-          <h2 class="section-title">Moments that matter</h2>
-          <p>Simple, affordable, beautiful. Dogwood Photos offers 15-minute outdoor mini sessions at local parks and public spaces throughout the Triangle area. No fancy studio, no overwhelming packages &mdash; just real moments with real people.</p>
+        <div class="text-center mb-3 reveal">
+          <p class="section-label">Upcoming</p>
+          <h2 class="section-title">Where We'll Be</h2>
+        </div>
+        <div class="location-grid reveal" id="homepage-locations">
+          <!-- Dynamically populated from localStorage or defaults -->
+        </div>
+        <p class="text-center mt-2 reveal" style="font-weight: 300; font-size: 0.8rem; color: rgba(250,248,245,0.35); font-style: italic;">Locations are subject to change based on seasonal conditions. Follow us on Instagram <a href="https://instagram.com/dogwoodphotosnc" target="_blank" rel="noopener" style="color: var(--blush); font-weight: 500;">@dogwoodphotosnc</a> for the latest updates.</p>
+        <div class="text-center mt-2 reveal">
+          <a href="/locations.html" class="btn btn--outline-light">View Full Schedule</a>
         </div>
       </div>
     </section>
@@ -1335,67 +1871,6 @@
         </div>
         <div class="text-center reveal">
           <a href="/gallery.html" class="view-gallery-link">View Full Gallery</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Where We'll Be -->
-    <section class="section">
-      <div class="container">
-        <div class="text-center mb-3 reveal">
-          <p class="section-label">Upcoming</p>
-          <h2 class="section-title">Where We'll Be</h2>
-        </div>
-        <div class="location-grid reveal" id="homepage-locations">
-          <!-- Dynamically populated from localStorage or defaults -->
-        </div>
-        <p class="text-center mt-2 reveal" style="font-weight: 300; font-size: 0.8rem; color: rgba(14,12,10,0.45); font-style: italic;">Locations are subject to change based on seasonal conditions. Follow us on Instagram <a href="https://instagram.com/dogwoodphotosnc" target="_blank" rel="noopener" style="color: var(--blush-muted); font-weight: 500;">@dogwoodphotosnc</a> for the latest updates.</p>
-        <div class="text-center mt-2 reveal">
-          <a href="/locations.html" class="btn btn--outline">View Full Schedule</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing Preview -->
-    <section class="section">
-      <div class="container">
-        <div class="text-center mb-3 reveal">
-          <p class="section-label">Pricing</p>
-          <h2 class="section-title">Simple, Honest Pricing</h2>
-        </div>
-        <div class="pricing-grid reveal">
-          <!-- Base Session -->
-          <div class="pricing-card">
-            <p class="pricing-card__name">Base Session</p>
-            <p class="pricing-card__price">$40</p>
-            <p class="pricing-card__tagline">Your session, your favorites.</p>
-            <p class="pricing-card__desc">We capture your session and deliver all photos in an online gallery &mdash; watermarked and unedited, so you can see everything we got. Browse at your own pace, then pick your 2 favorites. We'll edit them, remove the watermarks, and deliver them back to you within 7 days. Beautiful photos without the guesswork.</p>
-            <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Base</a>
-          </div>
-          <!-- Full Gallery -->
-          <div class="pricing-card pricing-card--featured">
-            <p class="pricing-card__name">Full Gallery</p>
-            <p class="pricing-card__price">$60</p>
-            <p class="pricing-card__tagline">Every moment, fully edited.</p>
-            <p class="pricing-card__desc">We capture your session and handle everything from there. Every photo professionally edited, watermark-free, and delivered to your online gallery within 10 days. No choosing, no decisions &mdash; just open your gallery and love what you see.</p>
-            <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Full Gallery</a>
-          </div>
-          <!-- Rush -->
-          <div class="pricing-card">
-            <p class="pricing-card__name">Rush Delivery</p>
-            <p class="pricing-card__price">+$20</p>
-            <p class="pricing-card__tagline">Can't wait? We get it.</p>
-            <p class="pricing-card__desc">Add to the Base Session only. Get your 2 edited photos back in 48 hours instead of 7 days. Perfect for gifts, announcements, or when you just can't wait.</p>
-            <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Add Rush</a>
-          </div>
-        </div>
-
-        <!-- Something Different -->
-        <div class="text-center mt-3 reveal">
-          <h3 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Something Different in Mind?</h3>
-          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; line-height: 1.8; color: rgba(14,12,10,0.7);">Every family, couple, and moment is unique &mdash; and we get that. If you have a special request, a specific location, a larger group, or something outside our standard packages, just reach out. We're happy to work with you on something custom.</p>
-          <p style="margin-top: 1rem;"><a href="mailto:dogwoodphotosnc@gmail.com" style="color: var(--blush-muted); font-weight: 500;">Email us at dogwoodphotosnc@gmail.com</a></p>
-          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; font-size: 0.9rem; color: rgba(14,12,10,0.5); font-style: italic;">Custom sessions are priced based on your needs &mdash; but we'll always be upfront and fair about it.</p>
         </div>
       </div>
     </section>
@@ -1546,43 +2021,58 @@
       </div>
     </section>
 
-    <section class="section">
+    <!-- New pricing cards on pricing page too -->
+    <section class="pricing-section-new">
       <div class="container">
         <div class="text-center mb-3 reveal">
           <p class="section-label">Packages</p>
           <h2 class="section-title">Affordable for Everyone</h2>
         </div>
-        <div class="pricing-grid reveal">
-          <div class="pricing-card">
-            <p class="pricing-card__name">Base Session</p>
-            <p class="pricing-card__price">$40</p>
-            <p class="pricing-card__tagline">Your session, your favorites.</p>
-            <p class="pricing-card__desc">We capture your session and deliver all photos in an online gallery &mdash; watermarked and unedited, so you can see everything we got. Browse at your own pace, then pick your 2 favorites. We'll edit them, remove the watermarks, and deliver them back to you within 7 days. Beautiful photos without the guesswork.</p>
-            <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Base</a>
+        <div class="pricing-cards-new reveal">
+          <!-- Card 1: Base Session (Pink) -->
+          <div class="pricing-card-new--primary">
+            <div class="pricing-card-new__price-block">
+              <p class="pricing-card-new__price"><span class="pricing-card-new__dollar">$</span>40</p>
+              <p class="pricing-card-new__label">Base Session</p>
+            </div>
+            <div class="pricing-card-new__info">
+              <p class="pricing-card-new__title">Your session, your favorites.</p>
+              <p class="pricing-card-new__desc">15-minute outdoor session. All photos delivered in a watermarked gallery. Pick your 2 favorites &mdash; we'll edit and deliver them clean within 7 days.</p>
+            </div>
+            <div class="pricing-card-new__action">
+              <a href="#" class="pricing-card-new__btn" data-page="booking">Book Now</a>
+            </div>
           </div>
-          <div class="pricing-card pricing-card--featured">
-            <p class="pricing-card__name">Full Gallery</p>
-            <p class="pricing-card__price">$60</p>
-            <p class="pricing-card__tagline">Every moment, fully edited.</p>
-            <p class="pricing-card__desc">We capture your session and handle everything from there. Every photo professionally edited, watermark-free, and delivered to your online gallery within 10 days. No choosing, no decisions &mdash; just open your gallery and love what you see.</p>
-            <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Book Full Gallery</a>
+          <!-- Card 2: Full Gallery (Dark) -->
+          <div class="pricing-card-new--dark">
+            <div class="pricing-card-new__price-block">
+              <p class="pricing-card-new__price"><span class="pricing-card-new__dollar">$</span>60</p>
+              <p class="pricing-card-new__label">Full Gallery</p>
+            </div>
+            <div class="pricing-card-new__info">
+              <p class="pricing-card-new__title">Every moment, fully edited.</p>
+              <p class="pricing-card-new__desc">Every photo professionally edited, watermark-free, and delivered to your online gallery within 10 days. No choosing, no decisions &mdash; just open your gallery and love what you see.</p>
+            </div>
+            <div class="pricing-card-new__action">
+              <a href="#" class="pricing-card-new__btn" data-page="booking">Book Full</a>
+            </div>
           </div>
-          <div class="pricing-card">
-            <p class="pricing-card__name">Rush Delivery</p>
-            <p class="pricing-card__price">+$20</p>
-            <p class="pricing-card__tagline">Can't wait? We get it.</p>
-            <p class="pricing-card__desc">Add to the Base Session only. Get your 2 edited photos back in 48 hours instead of 7 days. Perfect for gifts, announcements, or when you just can't wait.</p>
-            <a href="https://calendly.com/ryantwhitt1/15min" class="stripe-btn">Add Rush</a>
+          <!-- Card 3: Rush (Dark) -->
+          <div class="pricing-card-new--dark">
+            <div class="pricing-card-new__price-block">
+              <p class="pricing-card-new__price"><span class="pricing-card-new__dollar">+</span>$20</p>
+              <p class="pricing-card-new__label">Rush</p>
+            </div>
+            <div class="pricing-card-new__info">
+              <p class="pricing-card-new__title">Can't wait? We get it.</p>
+              <p class="pricing-card-new__desc">Add to Base Session. Get your 2 edited photos in 48 hours instead of 7 days. Perfect for gifts, announcements, or when you just can't wait.</p>
+            </div>
+            <div class="pricing-card-new__action">
+              <a href="#" class="pricing-card-new__btn" data-page="booking">Add Rush</a>
+            </div>
           </div>
         </div>
-
-        <!-- Something Different -->
-        <div class="text-center mt-3 reveal">
-          <h3 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Something Different in Mind?</h3>
-          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; line-height: 1.8; color: rgba(14,12,10,0.7);">Every family, couple, and moment is unique &mdash; and we get that. If you have a special request, a specific location, a larger group, or something outside our standard packages, just reach out. We're happy to work with you on something custom.</p>
-          <p style="margin-top: 1rem;"><a href="mailto:dogwoodphotosnc@gmail.com" style="color: var(--blush-muted); font-weight: 500;">Email us at dogwoodphotosnc@gmail.com</a></p>
-          <p style="max-width: 640px; margin: 1rem auto; font-weight: 300; font-size: 0.9rem; color: rgba(14,12,10,0.5); font-style: italic;">Custom sessions are priced based on your needs &mdash; but we'll always be upfront and fair about it.</p>
-        </div>
+        <p class="pricing-custom-note reveal">Something different in mind? <a href="mailto:dogwoodphotosnc@gmail.com">Reach out</a> &mdash; custom sessions start at $75.</p>
       </div>
     </section>
 
@@ -1897,6 +2387,9 @@
 
       // Update URL hash
       history.pushState(null, '', '#' + page);
+
+      // Update nav transparency
+      updateNavTransparency();
     }
 
     // Bind all nav links
@@ -1927,10 +2420,20 @@
       document.getElementById('mobileMenu').classList.toggle('open');
     });
 
-    // ---- Scroll Nav Shadow ----
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
-    });
+    // ---- Nav Transparency ----
+    function updateNavTransparency() {
+      const nav = document.getElementById('nav');
+      const isHome = document.getElementById('page-home').classList.contains('active');
+      if (isHome && window.scrollY < 80) {
+        nav.classList.add('nav--transparent');
+      } else {
+        nav.classList.remove('nav--transparent');
+      }
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    }
+
+    window.addEventListener('scroll', updateNavTransparency);
+    updateNavTransparency();
 
     // ---- Accordion ----
     document.querySelectorAll('.accordion__trigger').forEach(btn => {
@@ -1958,6 +2461,95 @@
     }
 
     initReveals();
+
+    // ---- Falling Petals Animation ----
+    (function() {
+      var container = document.getElementById('petalContainer');
+      if (!container) return;
+
+      var petalCount = 0;
+      var MAX_PETALS = 20;
+
+      function randRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function randInt(min, max) {
+        return Math.floor(randRange(min, max + 1));
+      }
+
+      function createPetal() {
+        if (petalCount >= MAX_PETALS) return;
+        petalCount++;
+
+        var size = randRange(16, 36);
+        var startX = randRange(10, 90);
+        var duration = randRange(9, 18);
+        var opacity = randRange(0.35, 0.7);
+        var r = randInt(205, 235);
+        var g = randInt(162, 204);
+        var b = randInt(168, 204);
+
+        var rot1 = randInt(-60, 60);
+        var rot2 = randInt(-120, 120);
+        var rot3 = randInt(-180, 180);
+        var rot4 = randInt(-60, 60);
+        var dx1 = randInt(-30, 30);
+        var dx2 = randInt(-40, 40);
+        var dx3 = randInt(-30, 30);
+        var dx4 = randInt(-20, 20);
+
+        var el = document.createElement('div');
+        el.className = 'hero-new__petal';
+        el.style.left = startX + '%';
+        el.style.top = '-40px';
+        el.style.width = size + 'px';
+        el.style.height = size + 'px';
+        el.style.setProperty('--petal-opacity', opacity);
+        el.style.setProperty('--r1', rot1 + 'deg');
+        el.style.setProperty('--r2', rot2 + 'deg');
+        el.style.setProperty('--r3', rot3 + 'deg');
+        el.style.setProperty('--r4', rot4 + 'deg');
+        el.style.setProperty('--dx1', dx1 + 'px');
+        el.style.setProperty('--dx2', dx2 + 'px');
+        el.style.setProperty('--dx3', dx3 + 'px');
+        el.style.setProperty('--dx4', dx4 + 'px');
+
+        var animName = Math.random() > 0.5 ? 'petalFall' : 'petalSwirl';
+        el.style.animation = animName + ' ' + duration + 's linear forwards';
+
+        el.innerHTML = '<svg viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="' + size + '" height="' + (size * 1.33) + '">' +
+          '<path d="M12 0 C16 8, 20 16, 12 32 C4 16, 8 8, 12 0Z" fill="rgb(' + r + ',' + g + ',' + b + ')" opacity="0.8"/>' +
+          '<line x1="12" y1="4" x2="12" y2="28" stroke="rgb(' + (r - 20) + ',' + (g - 20) + ',' + (b - 20) + ')" stroke-width="0.5" opacity="0.4"/>' +
+          '<line x1="12" y1="12" x2="8" y2="16" stroke="rgb(' + (r - 20) + ',' + (g - 20) + ',' + (b - 20) + ')" stroke-width="0.3" opacity="0.3"/>' +
+          '<line x1="12" y1="14" x2="16" y2="18" stroke="rgb(' + (r - 20) + ',' + (g - 20) + ',' + (b - 20) + ')" stroke-width="0.3" opacity="0.3"/>' +
+          '</svg>';
+
+        container.appendChild(el);
+
+        el.addEventListener('animationend', function() {
+          el.remove();
+          petalCount--;
+        });
+      }
+
+      // Initial burst of petals
+      for (var i = 0; i < 10; i++) {
+        (function(delay) {
+          setTimeout(createPetal, delay);
+        })(i * 350);
+      }
+
+      // Continuous spawning
+      function scheduleNext() {
+        var delay = randRange(800, 1300);
+        setTimeout(function() {
+          createPetal();
+          scheduleNext();
+        }, delay);
+      }
+      scheduleNext();
+    })();
   </script>
 
 </body>
