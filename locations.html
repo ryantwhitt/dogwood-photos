@@ -510,25 +510,8 @@
         <p style="max-width: 640px; margin: 1.5rem auto 0; font-weight: 300; line-height: 1.8; color: rgba(14,12,10,0.7);">We scout the best spots so you don't have to. Here's where we're headed &mdash; and if you have somewhere special in mind, let's talk.</p>
       </div>
 
-      <div class="location-grid reveal">
-        <!-- Location Card 1 — Edit name, date, and description each week -->
-        <div class="location-card">
-          <p class="location-card__name"><a href="https://maps.google.com/?q=Wendell+Falls,+Wendell,+NC" target="_blank" rel="noopener">Wendell Falls</a></p>
-          <p class="location-card__date">Weeks of March 17 &amp; March 24</p>
-          <p class="location-card__desc">A beautiful planned community with scenic walking paths, open green spaces, and gorgeous natural light. Perfect for families and couples.</p>
-        </div>
-        <!-- Location Card 2 — Edit name, date, and description each week -->
-        <div class="location-card">
-          <p class="location-card__name"><a href="https://maps.google.com/?q=Oak+View+County+Park,+Garner,+NC" target="_blank" rel="noopener">Oak View County Park</a></p>
-          <p class="location-card__date">Weeks of March 31 &amp; April 7</p>
-          <p class="location-card__desc">A charming historic farm setting with open fields, mature trees, and stunning golden hour light.</p>
-        </div>
-        <!-- Location Card 3 — Edit or remove as needed -->
-        <div class="location-card">
-          <p class="location-card__name"><a href="https://maps.google.com/?q=North+Carolina+Museum+of+Art,+Raleigh,+NC" target="_blank" rel="noopener">NC Museum of Art</a></p>
-          <p class="location-card__date">Weeks of April 14 &amp; April 21</p>
-          <p class="location-card__desc">One of Raleigh's most stunning outdoor settings &mdash; sculpture gardens, open lawns, and beautiful walking trails.</p>
-        </div>
+      <div class="location-grid reveal" id="all-locations">
+        <!-- Dynamically populated from localStorage or defaults -->
       </div>
 
       <p class="text-center mt-3 reveal" style="font-weight: 300; font-size: 0.8rem; color: rgba(14,12,10,0.45); font-style: italic;">Locations are subject to change based on seasonal conditions. Follow us on Instagram <a href="https://instagram.com/dogwoodphotosnc" target="_blank" rel="noopener" style="color: var(--blush-muted); font-weight: 500;">@dogwoodphotosnc</a> for the latest updates.</p>
@@ -592,6 +575,37 @@
   </footer>
 
   <script>
+    // ---- Dynamic Location Cards from localStorage ----
+    (function() {
+      var STORAGE_KEY = 'dogwood_location_cards';
+      var defaults = [
+        { name: 'Wendell Falls', url: 'https://maps.google.com/?q=Wendell+Falls,+Wendell,+NC', date: 'Weeks of March 17 & March 24', desc: 'A beautiful planned community with scenic walking paths, open green spaces, and gorgeous natural light. Perfect for families and couples.', active: true },
+        { name: 'Wendell Falls', url: 'https://maps.google.com/?q=Wendell+Falls,+Wendell,+NC', date: 'Weeks of March 17 & March 24', desc: 'A beautiful planned community with scenic walking paths, open green spaces, and gorgeous natural light. Perfect for families and couples.', active: true },
+        { name: 'Oak View County Park', url: 'https://maps.google.com/?q=Oak+View+County+Park,+Garner,+NC', date: 'Weeks of March 31 & April 7', desc: 'A charming historic farm setting with open fields, mature trees, and stunning golden hour light.', active: true },
+        { name: 'Oak View County Park', url: 'https://maps.google.com/?q=Oak+View+County+Park,+Garner,+NC', date: 'Weeks of March 31 & April 7', desc: 'A charming historic farm setting with open fields, mature trees, and stunning golden hour light.', active: true },
+        { name: 'NC Museum of Art', url: 'https://maps.google.com/?q=North+Carolina+Museum+of+Art,+Raleigh,+NC', date: 'Weeks of April 14 & April 21', desc: "One of Raleigh's most stunning outdoor settings — sculpture gardens, open lawns, and beautiful walking trails.", active: true },
+        { name: 'NC Museum of Art', url: 'https://maps.google.com/?q=North+Carolina+Museum+of+Art,+Raleigh,+NC', date: 'Weeks of April 14 & April 21', desc: "One of Raleigh's most stunning outdoor settings — sculpture gardens, open lawns, and beautiful walking trails.", active: true },
+        { name: '', url: '', date: '', desc: '', active: false },
+        { name: '', url: '', date: '', desc: '', active: false },
+        { name: '', url: '', date: '', desc: '', active: false },
+        { name: '', url: '', date: '', desc: '', active: false }
+      ];
+      function esc(s) { if (!s) return ''; var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+      function getCards() {
+        try { var s = localStorage.getItem(STORAGE_KEY); if (s) return JSON.parse(s); } catch(e) {}
+        return defaults;
+      }
+      var cards = getCards();
+      var activeCards = cards.filter(function(c) { return c.active && c.name; });
+      var container = document.getElementById('all-locations');
+      if (container && activeCards.length) {
+        container.innerHTML = activeCards.map(function(c) {
+          var nameHtml = c.url ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.name) + '</a>' : esc(c.name);
+          return '<div class="location-card"><p class="location-card__name">' + nameHtml + '</p><p class="location-card__date">' + esc(c.date) + '</p><p class="location-card__desc">' + esc(c.desc) + '</p></div>';
+        }).join('');
+      }
+    })();
+
     // Scroll shadow on nav
     window.addEventListener('scroll', () => {
       document.getElementById('nav').classList.toggle('nav--scrolled', window.scrollY > 10);
