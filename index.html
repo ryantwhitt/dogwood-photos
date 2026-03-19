@@ -311,7 +311,7 @@
       pointer-events: none;
       z-index: 1;
       mix-blend-mode: screen;
-      filter: grayscale(1) sepia(1) saturate(0.6) hue-rotate(315deg) brightness(1.6);
+      filter: invert(1) brightness(1.8) sepia(1) saturate(0.25) hue-rotate(310deg);
       opacity: 0.10;
     }
 
@@ -336,15 +336,15 @@
       object-fit: contain;
     }
 
-    /* Filter presets — blush pink #E8C7C8 tints */
+    /* Filter presets — light blush pink tints */
     .dw-flower--blush img {
-      filter: grayscale(1) sepia(1) saturate(0.6) hue-rotate(315deg) brightness(1.6);
+      filter: invert(1) brightness(2.2) sepia(1) saturate(0.18) hue-rotate(310deg);
     }
     .dw-flower--warm img {
-      filter: grayscale(1) sepia(1) saturate(0.7) hue-rotate(320deg) brightness(1.5);
+      filter: invert(1) brightness(2.1) sepia(1) saturate(0.22) hue-rotate(315deg);
     }
     .dw-flower--soft img {
-      filter: grayscale(1) sepia(1) saturate(0.5) hue-rotate(310deg) brightness(1.7);
+      filter: invert(1) brightness(2.4) sepia(1) saturate(0.15) hue-rotate(308deg);
     }
 
     .hero-new__content {
