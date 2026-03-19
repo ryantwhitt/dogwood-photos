@@ -304,9 +304,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      height: 90%;
+      height: 92%;
       width: auto;
-      max-width: 85%;
+      max-width: 90%;
       object-fit: contain;
       pointer-events: none;
       z-index: 1;
@@ -315,27 +315,36 @@
       opacity: 0.13;
     }
 
-    .hero-new__petals {
+    /* ===================== DECORATIVE DOGWOOD FLOWERS ===================== */
+    .dw-flower {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
       pointer-events: none;
-      z-index: 3;
-      overflow: hidden;
-    }
-
-    .hero-new__petal {
-      position: absolute;
-      will-change: transform, opacity;
+      z-index: 2;
       mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity 0.8s ease;
     }
 
-    .hero-new__petal img {
+    .dw-flower.revealed,
+    .page.visible .dw-flower {
+      opacity: 1;
+    }
+
+    .dw-flower img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    /* Filter presets for tint variety */
+    .dw-flower--blush img {
+      filter: invert(1) brightness(1.7) sepia(1) saturate(0.3) hue-rotate(310deg);
+    }
+    .dw-flower--warm img {
+      filter: invert(1) brightness(1.5) sepia(1) saturate(0.35) hue-rotate(318deg);
+    }
+    .dw-flower--soft img {
+      filter: invert(1) brightness(2) sepia(1) saturate(0.2) hue-rotate(305deg);
     }
 
     .hero-new__content {
@@ -451,26 +460,26 @@
       50% { opacity: 0.6; }
     }
 
-    @keyframes petalFall {
-      0%   { transform: translateY(0)     translateX(0px)    rotate(var(--r1)); opacity: var(--petal-opacity); }
-      25%  { transform: translateY(25vh)  translateX(var(--dx1)) rotate(var(--r2)); opacity: var(--petal-opacity); }
-      50%  { transform: translateY(50vh)  translateX(var(--dx2)) rotate(var(--r3)); opacity: var(--petal-opacity); }
-      75%  { transform: translateY(75vh)  translateX(var(--dx3)) rotate(var(--r4)); opacity: var(--petal-opacity); }
-      100% { transform: translateY(105vh) translateX(var(--dx4)) rotate(var(--r1)); opacity: 0; }
-    }
-
-    @keyframes petalSwirl {
-      0%   { transform: translateY(0)     translateX(0px)     rotate(var(--r1)); opacity: var(--petal-opacity); }
-      25%  { transform: translateY(25vh)  translateX(calc(var(--dx1) * 2.5)) rotate(var(--r2)); opacity: var(--petal-opacity); }
-      50%  { transform: translateY(50vh)  translateX(calc(var(--dx2) * -2))  rotate(var(--r3)); opacity: var(--petal-opacity); }
-      75%  { transform: translateY(75vh)  translateX(calc(var(--dx3) * 2.5)) rotate(var(--r4)); opacity: var(--petal-opacity); }
-      100% { transform: translateY(105vh) translateX(calc(var(--dx4) * -1.5)) rotate(var(--r1)); opacity: 0; }
-    }
-
     @media (max-width: 768px) {
+      .hero-new__tree {
+        height: 105%;
+        max-width: 140%;
+        opacity: 0.15;
+      }
       .hero-new__title { font-size: 52px; }
       .hero-new__location { font-size: 11px; letter-spacing: 2.5px; }
       .hero-new__sessions { font-size: 12px; letter-spacing: 2px; }
+      /* Scale down decorative flowers on mobile */
+      .dw-flower { transform: scale(0.6); }
+    }
+
+    @media (max-width: 480px) {
+      .hero-new__tree {
+        height: 110%;
+        max-width: 180%;
+        opacity: 0.16;
+      }
+      .dw-flower { transform: scale(0.45); }
     }
 
     /* ===================== MINI HERO (inner pages) ===================== */
@@ -1658,8 +1667,25 @@
       <!-- Dogwood tree background image -->
       <img class="hero-new__tree" src="Dogwood_Tree.jpg" alt="" />
 
-      <!-- Falling petals container -->
-      <div class="hero-new__petals" id="petalContainer"></div>
+      <!-- Decorative flowers — hero corners -->
+      <div class="dw-flower dw-flower--blush" style="top:-20px;left:-30px;width:130px;height:130px;transform:rotate(-25deg);opacity:0.18;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--warm" style="top:30px;right:-25px;width:100px;height:100px;transform:rotate(20deg);opacity:0.14;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--soft" style="bottom:60px;left:-15px;width:90px;height:90px;transform:rotate(-40deg);opacity:0.12;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--blush" style="bottom:-10px;right:-20px;width:115px;height:115px;transform:rotate(35deg);opacity:0.16;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--warm" style="top:35%;left:-35px;width:80px;height:80px;transform:rotate(-15deg);opacity:0.10;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--soft" style="top:25%;right:-20px;width:70px;height:70px;transform:rotate(50deg);opacity:0.11;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
 
       <!-- Text content -->
       <div class="hero-new__content">
@@ -1676,7 +1702,14 @@
     </section>
 
     <!-- Pricing (moved up) -->
-    <section class="pricing-section-new">
+    <section class="pricing-section-new" style="position:relative;overflow:hidden;">
+      <!-- Decorative flowers — pricing corners -->
+      <div class="dw-flower dw-flower--warm reveal" style="top:-15px;right:-25px;width:120px;height:120px;transform:rotate(15deg);opacity:0.13;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--soft reveal" style="bottom:-20px;left:-30px;width:105px;height:105px;transform:rotate(-30deg);opacity:0.11;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
       <div class="container">
         <div class="text-center mb-3 reveal">
           <p class="section-label">Pricing</p>
@@ -1731,7 +1764,14 @@
     </section>
 
     <!-- Where We'll Be (dark theme) -->
-    <section class="locations-section-dark">
+    <section class="locations-section-dark" style="position:relative;overflow:hidden;">
+      <!-- Decorative flowers — locations -->
+      <div class="dw-flower dw-flower--blush reveal" style="top:40px;left:-20px;width:95px;height:95px;transform:rotate(-20deg);opacity:0.12;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--warm reveal" style="bottom:30px;right:-15px;width:85px;height:85px;transform:rotate(40deg);opacity:0.10;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
       <div class="container">
         <div class="text-center mb-3 reveal">
           <p class="section-label">Upcoming</p>
@@ -1748,7 +1788,14 @@
     </section>
 
     <!-- Gallery Carousel -->
-    <section class="section section--alt">
+    <section class="section section--alt" style="position:relative;overflow:hidden;">
+      <!-- Decorative flowers — gallery -->
+      <div class="dw-flower dw-flower--warm reveal" style="top:-10px;right:20px;width:100px;height:100px;transform:rotate(25deg);opacity:0.09;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--blush reveal" style="bottom:-15px;left:10px;width:80px;height:80px;transform:rotate(-35deg);opacity:0.08;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
       <div class="container">
         <div class="text-center mb-3 reveal">
           <h2 class="section-title">Recent Work</h2>
@@ -1774,13 +1821,25 @@
     </section>
 
     <!-- Quote -->
-    <section class="quote-block reveal">
+    <section class="quote-block reveal" style="position:relative;overflow:hidden;">
+      <div class="dw-flower dw-flower--soft" style="top:50%;left:-25px;width:110px;height:110px;transform:translateY(-50%) rotate(-10deg);opacity:0.10;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--blush" style="top:50%;right:-25px;width:110px;height:110px;transform:translateY(-50%) rotate(10deg);opacity:0.10;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
       <p class="quote-block__text">Every family deserves beautiful photos without the stress</p>
       <p class="quote-block__attr">The Dogwood Philosophy</p>
     </section>
 
     <!-- CTA -->
-    <section class="cta-banner reveal">
+    <section class="cta-banner reveal" style="position:relative;overflow:hidden;">
+      <div class="dw-flower dw-flower--warm" style="top:-15px;left:-10px;width:90px;height:90px;transform:rotate(-20deg);opacity:0.08;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
+      <div class="dw-flower dw-flower--soft" style="bottom:-10px;right:-15px;width:95px;height:95px;transform:rotate(30deg);opacity:0.09;">
+        <img src="Dogwood_Flower.jpg" alt="" />
+      </div>
       <h2 class="cta-banner__title">Ready to book?</h2>
       <p class="cta-banner__text">Pick a time that works for you. 15 minutes is all we need.</p>
       <a href="#" class="btn btn--primary" data-page="booking">Schedule Your Session</a>
@@ -2360,93 +2419,7 @@
 
     initReveals();
 
-    // ---- Falling Petals Animation ----
-    (function() {
-      var container = document.getElementById('petalContainer');
-      if (!container) return;
-
-      var petalCount = 0;
-      var MAX_PETALS = 20;
-
-      function randRange(min, max) {
-        return Math.random() * (max - min) + min;
-      }
-
-      function randInt(min, max) {
-        return Math.floor(randRange(min, max + 1));
-      }
-
-      function createPetal() {
-        if (petalCount >= MAX_PETALS) return;
-        petalCount++;
-
-        var size = randRange(16, 36);
-        var startX = randRange(10, 90);
-        var duration = randRange(9, 18);
-        var opacity = randRange(0.35, 0.7);
-        var r = randInt(205, 235);
-        var g = randInt(162, 204);
-        var b = randInt(168, 204);
-
-        var rot1 = randInt(-60, 60);
-        var rot2 = randInt(-120, 120);
-        var rot3 = randInt(-180, 180);
-        var rot4 = randInt(-60, 60);
-        var dx1 = randInt(-60, 60);
-        var dx2 = randInt(-80, 80);
-        var dx3 = randInt(-60, 60);
-        var dx4 = randInt(-40, 40);
-
-        var el = document.createElement('div');
-        el.className = 'hero-new__petal';
-        el.style.left = startX + '%';
-        el.style.top = '-40px';
-        el.style.width = size + 'px';
-        el.style.height = size + 'px';
-        el.style.setProperty('--petal-opacity', opacity);
-        el.style.setProperty('--r1', rot1 + 'deg');
-        el.style.setProperty('--r2', rot2 + 'deg');
-        el.style.setProperty('--r3', rot3 + 'deg');
-        el.style.setProperty('--r4', rot4 + 'deg');
-        el.style.setProperty('--dx1', dx1 + 'px');
-        el.style.setProperty('--dx2', dx2 + 'px');
-        el.style.setProperty('--dx3', dx3 + 'px');
-        el.style.setProperty('--dx4', dx4 + 'px');
-
-        var animName = Math.random() > 0.5 ? 'petalFall' : 'petalSwirl';
-        el.style.animation = animName + ' ' + duration + 's linear forwards';
-
-        // Vary hue-rotate slightly per petal for organic feel (300-320deg range)
-        var hueShift = randInt(300, 325);
-        var brightShift = randRange(1.4, 1.9).toFixed(2);
-        var satShift = randRange(0.2, 0.4).toFixed(2);
-        el.innerHTML = '<img src="Dogwood_Flower.jpg" alt="" style="width:100%;height:100%;object-fit:contain;filter:invert(1) brightness(' + brightShift + ') sepia(1) saturate(' + satShift + ') hue-rotate(' + hueShift + 'deg);" />';
-
-        container.appendChild(el);
-
-        el.addEventListener('animationend', function() {
-          el.remove();
-          petalCount--;
-        });
-      }
-
-      // Initial burst of petals
-      for (var i = 0; i < 10; i++) {
-        (function(delay) {
-          setTimeout(createPetal, delay);
-        })(i * 350);
-      }
-
-      // Continuous spawning
-      function scheduleNext() {
-        var delay = randRange(800, 1300);
-        setTimeout(function() {
-          createPetal();
-          scheduleNext();
-        }, delay);
-      }
-      scheduleNext();
-    })();
+    // (Falling petals removed — replaced with static decorative flowers)
   </script>
 
 </body>
